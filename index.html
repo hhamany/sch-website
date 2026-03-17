@@ -272,32 +272,32 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Press+Start+2P&display=swap');
 
 :root {
-  --amber: #FFB000;
-  --amber-dim: #8B6000;
-  --amber-dark: #1a0e00;
+  --amber: #00FF88;
+  --amber-dim: #4a8c66;
+  --amber-dark: #001a0d;
   --amber-glow: rgba(255,176,0,0.15);
   --amber-glow-strong: rgba(255,176,0,0.35);
   --crt-green: #33ff33;
-  --ibm-bg: #0a0800;
-  --ibm-bg2: #110f00;
+  --ibm-bg: #000;
+  --ibm-bg2: #030a05;
   --ibm-border: rgba(255,176,0,0.25);
   --pixel: 'Press Start 2P', monospace;
   --courier: 'Courier Prime', 'Courier New', monospace;
 }
 
-#public-landing{display:none;position:fixed;inset:0;z-index:300;overflow-y:auto;background:var(--ibm-bg);font-family:var(--courier)}
+#public-landing{display:none;position:fixed;inset:0;z-index:300;overflow-y:auto;background:#000;font-family:'Courier Prime', 'Courier New', monospace}
 #public-landing.active{display:block}
 
 /* Heavy CRT scanlines on landing only */
 #public-landing::before{
   content:'';position:fixed;inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.4) 3px,rgba(0,0,0,.4) 4px);
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.35) 3px,rgba(0,0,0,.35) 4px);
   z-index:9999;pointer-events:none
 }
 /* Phosphor vignette */
 #public-landing::after{
   content:'';position:fixed;inset:0;
-  background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.85) 100%);
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,5,2,.9) 100%);
   z-index:9998;pointer-events:none
 }
 
@@ -306,35 +306,35 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   position:fixed;top:0;left:0;right:0;z-index:10000;
   display:flex;align-items:center;justify-content:space-between;
   padding:.7rem 2rem;
-  background:var(--ibm-bg);
-  border-bottom:2px solid var(--amber);
-  font-family:var(--courier);
+  background:#000;
+  border-bottom:2px solid var(--neon);
+  font-family:'Courier Prime', 'Courier New', monospace;
 }
 .pub-nav-logo{
-  font-family:var(--pixel);font-size:.7rem;
-  color:var(--amber);
-  text-shadow:0 0 10px var(--amber),0 0 20px rgba(255,176,0,.5);
+  font-family:'Press Start 2P', monospace;font-size:.7rem;
+  color:var(--neon);
+  text-shadow:0 0 10px var(--neon),0 0 20px rgba(0,255,136,.5);
   letter-spacing:.1em;
   animation:ibmFlicker 4s infinite;
 }
 .pub-nav-links{display:flex;gap:2rem;list-style:none}
 .pub-nav-links a{
   font-size:.75rem;letter-spacing:.2em;
-  color:var(--amber-dim);
+  color:var(--text-dim);
   transition:color .1s;
   text-transform:uppercase;
-  font-family:var(--courier);
+  font-family:'Courier Prime', 'Courier New', monospace;
 }
-.pub-nav-links a:hover{color:var(--amber);text-shadow:0 0 8px var(--amber)}
+.pub-nav-links a:hover{color:var(--neon);text-shadow:0 0 8px var(--neon)}
 .pub-nav-login{
-  font-family:var(--pixel);font-size:.5rem;letter-spacing:.1em;
-  color:var(--ibm-bg);background:var(--amber);
+  font-family:'Press Start 2P', monospace;font-size:.5rem;letter-spacing:.1em;
+  color:#000;background:var(--neon);
   border:none;padding:.6rem 1rem;
   cursor:crosshair;transition:all .2s;
   text-shadow:none;
-  box-shadow:0 0 15px var(--amber-glow-strong), 3px 3px 0 rgba(0,0,0,.5);
+  box-shadow:0 0 15px var(--neon-glow-strong), 3px 3px 0 rgba(0,0,0,.5);
 }
-.pub-nav-login:hover{background:#ffc933;box-shadow:0 0 25px var(--amber),3px 3px 0 rgba(0,0,0,.5)}
+.pub-nav-login:hover{background:#00cc6a;box-shadow:0 0 25px var(--neon),3px 3px 0 rgba(0,0,0,.5)}
 
 /* HERO */
 .landing-hero{
@@ -350,8 +350,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .landing-hero::before{
   content:'01001111 01010010 00110001 00110001 01001000 01000001 01000011 01001011 00110001 01001110 01000111 01010011 01011001 01010011 01010100 01000101 01001101 00110001 01001110 01001001 01010100 01001001 01000001 01001100 01001001 01011010 01000101 01000100 01000011 01001000 01000001 01001111 01010011';
   position:absolute;inset:0;
-  font-family:var(--courier);font-size:.55rem;
-  color:rgba(255,176,0,.04);
+  font-family:'Courier Prime', 'Courier New', monospace;font-size:.55rem;
+  color:rgba(0,255,136,.04);
   word-break:break-all;line-height:1.8;
   padding:2rem;
   pointer-events:none;
@@ -360,10 +360,10 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 }
 
 .ibm-badge{
-  font-family:var(--courier);
+  font-family:'Courier Prime', 'Courier New', monospace;
   font-size:.75rem;letter-spacing:.5em;
-  color:var(--amber-dim);
-  border:1px solid var(--amber-dim);
+  color:var(--text-dim);
+  border:1px solid var(--text-dim);
   padding:.3rem 1.5rem;
   margin-bottom:2.5rem;
   display:inline-block;
@@ -372,7 +372,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 
 /* PIXEL TITLE */
 .landing-title{
-  font-family:var(--pixel);
+  font-family:'Press Start 2P', monospace;
   line-height:1.8;
   margin-bottom:2rem;
   position:relative;
@@ -380,8 +380,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .landing-title .t1{
   display:block;
   font-size:clamp(1.2rem,4vw,3.5rem);
-  color:var(--amber);
-  text-shadow:0 0 20px var(--amber),0 0 40px rgba(255,176,0,.4),0 0 80px rgba(255,176,0,.2);
+  color:var(--neon);
+  text-shadow:0 0 20px var(--neon),0 0 40px rgba(0,255,136,.4),0 0 80px rgba(0,255,136,.2);
   animation:ibmFlicker 3s infinite;
   letter-spacing:.05em;
   margin-bottom:.5rem;
@@ -389,72 +389,72 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .landing-title .t2{
   display:block;
   font-size:clamp(.5rem,1.5vw,1.1rem);
-  color:rgba(255,176,0,.5);
+  color:rgba(0,255,136,.5);
   letter-spacing:.3em;
 }
 
 /* TYPEWRITER SUBTITLE */
 .landing-sub{
-  font-family:var(--courier);
+  font-family:'Courier Prime', 'Courier New', monospace;
   font-size:clamp(1rem,2.5vw,1.4rem);
-  color:var(--amber-dim);
+  color:var(--text-dim);
   margin-bottom:3rem;
   letter-spacing:.08em;
   min-height:2rem;
 }
 .landing-sub .cur{
   display:inline-block;width:10px;height:1em;
-  background:var(--amber);vertical-align:text-bottom;
+  background:var(--neon);vertical-align:text-bottom;
   animation:blink .8s step-end infinite;
 }
 
 /* BUTTONS */
 .landing-btns{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;margin-bottom:1rem}
 .land-btn{
-  font-family:var(--pixel);font-size:.5rem;letter-spacing:.1em;
+  font-family:'Press Start 2P', monospace;font-size:.5rem;letter-spacing:.1em;
   padding:.9rem 2rem;transition:all .2s;display:inline-block;
   text-transform:uppercase;cursor:crosshair;
 }
 .land-btn.primary{
-  color:var(--ibm-bg);background:var(--amber);border:none;
-  box-shadow:0 0 20px var(--amber-glow-strong),4px 4px 0 rgba(0,0,0,.6);
+  color:#000;background:var(--neon);border:none;
+  box-shadow:0 0 20px var(--neon-glow-strong),4px 4px 0 rgba(0,0,0,.6);
 }
-.land-btn.primary:hover{background:#ffc933;box-shadow:0 0 35px var(--amber),4px 4px 0 rgba(0,0,0,.6);transform:translate(-1px,-1px)}
+.land-btn.primary:hover{background:#00cc6a;box-shadow:0 0 35px var(--neon),4px 4px 0 rgba(0,0,0,.6);transform:translate(-1px,-1px)}
 .land-btn.secondary{
-  color:var(--amber);background:transparent;
-  border:2px solid var(--amber);
-  box-shadow:0 0 10px var(--amber-glow),4px 4px 0 rgba(255,176,0,.2);
+  color:var(--neon);background:transparent;
+  border:2px solid var(--neon);
+  box-shadow:0 0 10px var(--neon-glow),4px 4px 0 rgba(0,255,136,.2);
 }
-.land-btn.secondary:hover{background:rgba(255,176,0,.08);box-shadow:0 0 20px var(--amber-glow)}
+.land-btn.secondary:hover{background:rgba(0,255,136,.08);box-shadow:0 0 20px var(--neon-glow)}
 
 /* IBM STATS BAR */
 .ibm-stats-bar{
   margin-top:4rem;
-  border:1px solid var(--ibm-border);
+  border:1px solid var(--border);
   padding:0;
   display:flex;flex-wrap:wrap;
-  font-family:var(--courier);
+  font-family:'Courier Prime', 'Courier New', monospace;
   width:min(700px,90vw);
 }
 .ibm-stat{
   flex:1;min-width:140px;
   padding:1.2rem 1.5rem;
-  border-right:1px solid var(--ibm-border);
+  border-right:1px solid var(--border);
   text-align:center;
   position:relative;
 }
 .ibm-stat:last-child{border-right:none}
 .ibm-stat-top{
   font-size:.6rem;letter-spacing:.3em;
-  color:var(--amber-dim);
+  color:var(--text-dim);
   text-transform:uppercase;
   margin-bottom:.5rem;
   display:block;
 }
 .ibm-stat-num{
-  font-family:var(--pixel);font-size:1.2rem;
-  color:var(--amber);
-  text-shadow:0 0 10px var(--amber);
+  font-family:'Press Start 2P', monospace;font-size:1.2rem;
+  color:var(--neon);
+  text-shadow:0 0 10px var(--neon);
   display:block;
 }
 
@@ -463,164 +463,164 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   position:absolute;bottom:2rem;left:0;right:0;
   display:flex;justify-content:space-between;
   padding:0 2rem;
-  font-family:var(--courier);font-size:.7rem;
-  color:rgba(255,176,0,.3);
+  font-family:'Courier Prime', 'Courier New', monospace;font-size:.7rem;
+  color:rgba(0,255,136,.3);
   letter-spacing:.15em;
 }
 
 /* SECTIONS */
-.pub-section{padding:5rem 2rem;position:relative;z-index:2;background:var(--ibm-bg)}
+.pub-section{padding:5rem 2rem;position:relative;z-index:2;background:#000}
 
 /* Section headers — IBM style */
 .ibm-sec-header{
   text-align:center;margin-bottom:3rem;
-  font-family:var(--courier);
+  font-family:'Courier Prime', 'Courier New', monospace;
 }
 .ibm-sec-label{
   display:block;
   font-size:.7rem;letter-spacing:.5em;
-  color:var(--amber-dim);
+  color:var(--text-dim);
   margin-bottom:1rem;
   text-transform:uppercase;
 }
 .ibm-sec-title{
-  font-family:var(--pixel);
+  font-family:'Press Start 2P', monospace;
   font-size:clamp(.9rem,2.5vw,1.8rem);
-  color:var(--amber);
-  text-shadow:0 0 15px rgba(255,176,0,.4);
+  color:var(--neon);
+  text-shadow:0 0 15px rgba(0,255,136,.4);
   letter-spacing:.05em;
   line-height:2;
 }
 .ibm-sec-div{
   width:100%;height:1px;
-  background:linear-gradient(90deg,transparent,var(--amber),transparent);
+  background:linear-gradient(90deg,transparent,var(--neon),transparent);
   margin:1.5rem auto 0;
   max-width:400px;
 }
 
 /* TRACK CARDS — IBM terminal box style */
 .track-card-pub{
-  background:var(--ibm-bg2);
-  border:1px solid var(--ibm-border);
+  background:#030a05;
+  border:1px solid var(--border);
   padding:2rem;
   transition:all .2s;
   cursor:default;
   position:relative;
-  font-family:var(--courier);
+  font-family:'Courier Prime', 'Courier New', monospace;
 }
 .track-card-pub::before{
   content:'┌─────────────────────┐';
   position:absolute;top:-1px;left:-1px;right:-1px;
-  font-family:var(--courier);font-size:.6rem;
-  color:rgba(255,176,0,.15);
+  font-family:'Courier Prime', 'Courier New', monospace;font-size:.6rem;
+  color:rgba(0,255,136,.15);
   overflow:hidden;white-space:nowrap;
 }
 .track-card-pub:hover{
-  border-color:var(--amber);
-  box-shadow:0 0 20px rgba(255,176,0,.1),inset 0 0 30px rgba(255,176,0,.03);
+  border-color:var(--neon);
+  box-shadow:0 0 20px rgba(0,255,136,.1),inset 0 0 30px rgba(0,255,136,.03);
 }
 
 /* ABOUT terminal box */
 .ibm-terminal-box{
-  background:var(--ibm-bg2);
-  border:1px solid var(--ibm-border);
+  background:#030a05;
+  border:1px solid var(--border);
   padding:2rem;
-  font-family:var(--courier);
+  font-family:'Courier Prime', 'Courier New', monospace;
   font-size:.95rem;
   line-height:2;
   position:relative;
 }
 .ibm-terminal-box::before{
-  content:'IBM PERSONAL COMPUTER DOS VERSION 3.30  (C)COPYRIGHT IBM CORP 1981, 1987';
+  content:'IBM PERSONAL COMPUTER DOS VERSION 3.30  // SCH_OS KERNEL LOADED //';
   display:block;
   font-size:.6rem;letter-spacing:.05em;
-  color:rgba(255,176,0,.2);
+  color:rgba(0,255,136,.2);
   margin-bottom:1rem;
-  border-bottom:1px solid rgba(255,176,0,.1);
+  border-bottom:1px solid rgba(0,255,136,.1);
   padding-bottom:.8rem;
 }
-.itb-cmd{color:var(--amber-dim)}
-.itb-out{color:rgba(255,176,0,.75)}
-.itb-success{color:var(--amber);text-shadow:0 0 5px rgba(255,176,0,.3)}
-.itb-warn{color:#ff8c00}
+.itb-cmd{color:var(--text-dim)}
+.itb-out{color:rgba(0,255,136,.75)}
+.itb-success{color:var(--neon);text-shadow:0 0 5px rgba(0,255,136,.3)}
+.itb-warn{color:#ffcc00}
 
 /* LEADERBOARD IBM table style */
 .ibm-lb-header{
   display:grid;grid-template-columns:60px 1fr 80px;
   gap:1rem;padding:.6rem 1rem;
   font-size:.6rem;letter-spacing:.3em;
-  color:var(--amber-dim);
-  background:rgba(255,176,0,.05);
-  border:1px solid var(--ibm-border);
+  color:var(--text-dim);
+  background:rgba(0,255,136,.05);
+  border:1px solid var(--border);
   border-bottom:none;
-  font-family:var(--courier);
+  font-family:'Courier Prime', 'Courier New', monospace;
   text-transform:uppercase;
 }
 .ibm-lb-row{
   display:grid;grid-template-columns:60px 1fr 80px;
   gap:1rem;padding:.9rem 1rem;
-  border:1px solid rgba(255,176,0,.08);
+  border:1px solid rgba(0,255,136,.08);
   border-top:none;
   align-items:center;
   transition:all .15s;
-  font-family:var(--courier);
+  font-family:'Courier Prime', 'Courier New', monospace;
   cursor:default;
 }
-.ibm-lb-row:hover{background:rgba(255,176,0,.04);border-color:rgba(255,176,0,.15)}
-.ibm-lb-row.r1{background:rgba(255,176,0,.06);border-color:rgba(255,176,0,.2)}
+.ibm-lb-row:hover{background:rgba(0,255,136,.04);border-color:rgba(0,255,136,.15)}
+.ibm-lb-row.r1{background:rgba(0,255,136,.06);border-color:rgba(0,255,136,.2)}
 
 /* FORM IBM style */
 .ibm-form-field{margin-bottom:1rem}
 .ibm-form-field label{
   display:block;font-size:.7rem;letter-spacing:.25em;
-  color:var(--amber-dim);margin-bottom:.3rem;
-  font-family:var(--courier);text-transform:uppercase;
+  color:var(--text-dim);margin-bottom:.3rem;
+  font-family:'Courier Prime', 'Courier New', monospace;text-transform:uppercase;
 }
-.ibm-form-field label::before{content:'C:\> ';color:rgba(255,176,0,.3)}
+.ibm-form-field label::before{content:'C:\> ';color:rgba(0,255,136,.3)}
 .ibm-form-field input,.ibm-form-field select{
   width:100%;
   background:rgba(0,0,0,.9);
-  border:none;border-bottom:1px solid var(--ibm-border);
-  border-left:2px solid var(--amber);
-  color:var(--amber);
-  font-family:var(--courier);font-size:.95rem;
+  border:none;border-bottom:1px solid var(--border);
+  border-left:2px solid var(--neon);
+  color:var(--neon);
+  font-family:'Courier Prime', 'Courier New', monospace;font-size:.95rem;
   padding:.6rem .8rem;outline:none;
   transition:border-color .2s;
 }
 .ibm-form-field input:focus,.ibm-form-field select:focus{
-  border-bottom-color:var(--amber);
-  border-left-color:var(--amber);
-  box-shadow:0 2px 0 var(--amber);
-  background:rgba(255,176,0,.03);
+  border-bottom-color:var(--neon);
+  border-left-color:var(--neon);
+  box-shadow:0 2px 0 var(--neon);
+  background:rgba(0,255,136,.03);
 }
-.ibm-form-field input::placeholder{color:rgba(255,176,0,.25)}
-.ibm-form-field select option{background:#0a0800;color:var(--amber)}
+.ibm-form-field input::placeholder{color:rgba(0,255,136,.25)}
+.ibm-form-field select option{background:#000;color:var(--neon)}
 .ibm-submit{
   width:100%;
-  font-family:var(--pixel);font-size:.5rem;letter-spacing:.1em;
-  color:var(--ibm-bg);background:var(--amber);border:none;
+  font-family:'Press Start 2P', monospace;font-size:.5rem;letter-spacing:.1em;
+  color:#000;background:var(--neon);border:none;
   padding:1rem;cursor:crosshair;
-  box-shadow:0 0 15px var(--amber-glow-strong),4px 4px 0 rgba(0,0,0,.5);
+  box-shadow:0 0 15px var(--neon-glow-strong),4px 4px 0 rgba(0,0,0,.5);
   transition:all .2s;margin-top:.5rem;
 }
-.ibm-submit:hover{background:#ffc933;box-shadow:0 0 25px var(--amber)}
+.ibm-submit:hover{background:#00cc6a;box-shadow:0 0 25px var(--neon)}
 
 /* FOOTER IBM */
 .ibm-footer{
-  border-top:2px solid var(--amber);
+  border-top:2px solid var(--neon);
   padding:3rem 2rem;
   text-align:center;
-  background:var(--ibm-bg);
-  font-family:var(--courier);
+  background:#000;
+  font-family:'Courier Prime', 'Courier New', monospace;
 }
 
 /* ANIMATIONS */
 @keyframes ibmFlicker{
-  0%,95%,100%{opacity:1}
-  96%{opacity:.7}
-  97%{opacity:1}
-  98%{opacity:.5}
-  99%{opacity:1}
+  0%,90%,100%{opacity:1;text-shadow:0 0 20px var(--neon),0 0 40px rgba(0,255,136,.4)}
+  91%{opacity:.7;text-shadow:none}
+  92%{opacity:1;text-shadow:0 0 20px var(--neon)}
+  95%{opacity:.4;text-shadow:none}
+  96%{opacity:1;text-shadow:0 0 30px var(--neon)}
 }
 @keyframes ibmScan{
   0%{transform:translateY(-100%)}
@@ -632,7 +632,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   .pub-nav-links{display:none}
   .landing-title .t1{font-size:1.5rem}
   .ibm-stats-bar{flex-direction:column}
-  .ibm-stat{border-right:none;border-bottom:1px solid var(--ibm-border)}
+  .ibm-stat{border-right:none;border-bottom:1px solid var(--border)}
   .pub-about-grid{grid-template-columns:1fr !important}
   .join-pub-grid{grid-template-columns:1fr !important}
 }
@@ -743,15 +743,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
     <div class="ibm-stats-bar">
       <div class="ibm-stat">
         <span class="ibm-stat-top">MEMBERS</span>
-        <span class="ibm-stat-num" data-target="120">0</span>
-      </div>
-      <div class="ibm-stat">
-        <span class="ibm-stat-top">EVENTS RAN</span>
-        <span class="ibm-stat-num" data-target="34">0</span>
-      </div>
-      <div class="ibm-stat">
-        <span class="ibm-stat-top">WINS</span>
-        <span class="ibm-stat-num" data-target="15">0</span>
+        <span class="ibm-stat-num" data-target="60">0</span>
       </div>
       <div class="ibm-stat">
         <span class="ibm-stat-top">TRACKS</span>
@@ -769,7 +761,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </div>
 
   <!-- ABOUT -->
-  <section class="pub-section" id="pub-about" style="border-top:1px solid rgba(255,176,0,.15)">
+  <section class="pub-section" id="pub-about" style="border-top:1px solid rgba(0,255,136,.15)">
     <div style="max-width:1100px;margin:0 auto">
       <div class="ibm-sec-header">
         <span class="ibm-sec-label">C:\SCH\SYSTEM> TYPE ABOUT.TXT</span>
@@ -777,10 +769,10 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="ibm-sec-div"></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start" class="pub-about-grid">
-        <div style="font-family:var(--courier)">
-          <p style="color:rgba(255,176,0,.7);line-height:2;font-size:.95rem;margin-bottom:1.2rem">Snake Chaos House is not your average university club. We are a <strong style="color:var(--amber)">digital war room</strong>, a forge of elite engineers, and a sanctuary for those who think in systems, exploit vulnerabilities, and build the impossible.</p>
-          <p style="color:rgba(255,176,0,.7);line-height:2;font-size:.95rem;margin-bottom:1.5rem">We operate at the intersection of <strong style="color:var(--amber)">cybersecurity, artificial intelligence, and competitive programming</strong>. Our members don't just study technology &#8212; they bend it.</p>
-          <blockquote style="font-family:var(--courier);font-size:1.1rem;border-left:3px solid var(--amber);padding-left:1.2rem;color:var(--amber);line-height:2;font-style:italic">"A tech house where chaos creates hackers, AI engineers, and problem solvers."</blockquote>
+        <div style="font-family:'Courier Prime', 'Courier New', monospace">
+          <p style="color:rgba(0,255,136,.7);line-height:2;font-size:.95rem;margin-bottom:1.2rem">Snake Chaos House is not your average university club. We are a <strong style="color:var(--neon)">digital war room</strong>, a forge of elite engineers, and a sanctuary for those who think in systems, exploit vulnerabilities, and build the impossible.</p>
+          <p style="color:rgba(0,255,136,.7);line-height:2;font-size:.95rem;margin-bottom:1.5rem">We operate at the intersection of <strong style="color:var(--neon)">cybersecurity, artificial intelligence, and competitive programming</strong>. Our members don't just study technology &#8212; they bend it.</p>
+          <blockquote style="font-family:'Courier Prime', 'Courier New', monospace;font-size:1.1rem;border-left:3px solid var(--neon);padding-left:1.2rem;color:var(--neon);line-height:2;font-style:italic">"A tech house where chaos creates hackers, AI engineers, and problem solvers."</blockquote>
         </div>
         <div class="ibm-terminal-box">
           <div class="itb-cmd">C:\SCH> cat manifesto.txt</div>
@@ -797,14 +789,14 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
           <div class="itb-success">[*] STATUS: ALWAYS RECRUITING</div>
           <div class="itb-warn">[!] CLEARANCE: NEED TO EARN IT</div>
           <div class="itb-out">&nbsp;</div>
-          <div class="itb-cmd">C:\SCH> _<span style="animation:blink .8s step-end infinite;background:var(--amber);color:var(--amber)">|</span></div>
+          <div class="itb-cmd">C:\SCH> _<span style="animation:blink .8s step-end infinite;background:var(--neon);color:var(--neon)">|</span></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- TRACKS -->
-  <section class="pub-section" id="pub-tracks" style="border-top:1px solid rgba(255,176,0,.15)">
+  <section class="pub-section" id="pub-tracks" style="border-top:1px solid rgba(0,255,136,.15)">
     <div style="max-width:1100px;margin:0 auto">
       <div class="ibm-sec-header">
         <span class="ibm-sec-label">C:\SCH\TRACKS> DIR</span>
@@ -814,27 +806,27 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:3rem">
 
         <div class="track-card-pub">
-          <div style="font-family:var(--courier);font-size:.6rem;letter-spacing:.3em;color:var(--amber-dim);margin-bottom:.8rem">TRACK_01.EXE</div>
-          <div style="font-family:var(--pixel);font-size:.9rem;color:var(--amber);margin-bottom:.8rem;text-shadow:0 0 10px rgba(255,176,0,.3);line-height:2">CYBER SECURITY</div>
-          <div style="font-family:var(--courier);font-size:.85rem;color:var(--amber-dim);margin-bottom:1rem;border-left:2px solid var(--amber-dim);padding-left:.8rem">"Think like a hacker"</div>
-          <p style="font-family:var(--courier);font-size:.82rem;color:rgba(255,176,0,.5);line-height:1.9">Master pentesting, CTF competitions, reverse engineering, and real-world attack simulation. Exploit and fortify systems others take for granted.</p>
-          <div style="margin-top:1.2rem;font-family:var(--courier);font-size:.65rem;color:rgba(255,176,0,.3);letter-spacing:.15em">[ PENTEST ] [ CTF ] [ OSINT ] [ MALWARE ]</div>
+          <div style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.6rem;letter-spacing:.3em;color:var(--text-dim);margin-bottom:.8rem">TRACK_01.EXE</div>
+          <div style="font-family:'Press Start 2P', monospace;font-size:.9rem;color:var(--neon);margin-bottom:.8rem;text-shadow:0 0 10px rgba(0,255,136,.3);line-height:2">CYBER SECURITY</div>
+          <div style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.85rem;color:var(--text-dim);margin-bottom:1rem;border-left:2px solid var(--text-dim);padding-left:.8rem">"Think like a hacker"</div>
+          <p style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.82rem;color:rgba(0,255,136,.5);line-height:1.9">Master pentesting, CTF competitions, reverse engineering, and real-world attack simulation. Exploit and fortify systems others take for granted.</p>
+          <div style="margin-top:1.2rem;font-family:'Courier Prime', 'Courier New', monospace;font-size:.65rem;color:rgba(0,255,136,.3);letter-spacing:.15em">[ PENTEST ] [ CTF ] [ OSINT ] [ MALWARE ]</div>
         </div>
 
         <div class="track-card-pub">
-          <div style="font-family:var(--courier);font-size:.6rem;letter-spacing:.3em;color:var(--amber-dim);margin-bottom:.8rem">TRACK_02.EXE</div>
-          <div style="font-family:var(--pixel);font-size:.9rem;color:var(--amber);margin-bottom:.8rem;text-shadow:0 0 10px rgba(255,176,0,.3);line-height:2">AI &amp; ROBOTICS</div>
-          <div style="font-family:var(--courier);font-size:.85rem;color:var(--amber-dim);margin-bottom:1rem;border-left:2px solid var(--amber-dim);padding-left:.8rem">"Build the future"</div>
-          <p style="font-family:var(--courier);font-size:.82rem;color:rgba(255,176,0,.5);line-height:1.9">Train models, build autonomous systems, deploy intelligence. From neural networks to physical robots &#8212; shape what comes next.</p>
-          <div style="margin-top:1.2rem;font-family:var(--courier);font-size:.65rem;color:rgba(255,176,0,.3);letter-spacing:.15em">[ DEEP LEARNING ] [ ROS ] [ LLMs ] [ CV ]</div>
+          <div style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.6rem;letter-spacing:.3em;color:var(--text-dim);margin-bottom:.8rem">TRACK_02.EXE</div>
+          <div style="font-family:'Press Start 2P', monospace;font-size:.9rem;color:var(--neon);margin-bottom:.8rem;text-shadow:0 0 10px rgba(0,255,136,.3);line-height:2">AI &amp; ROBOTICS</div>
+          <div style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.85rem;color:var(--text-dim);margin-bottom:1rem;border-left:2px solid var(--text-dim);padding-left:.8rem">"Build the future"</div>
+          <p style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.82rem;color:rgba(0,255,136,.5);line-height:1.9">Train models, build autonomous systems, deploy intelligence. From neural networks to physical robots &#8212; shape what comes next.</p>
+          <div style="margin-top:1.2rem;font-family:'Courier Prime', 'Courier New', monospace;font-size:.65rem;color:rgba(0,255,136,.3);letter-spacing:.15em">[ DEEP LEARNING ] [ ROS ] [ LLMs ] [ CV ]</div>
         </div>
 
         <div class="track-card-pub">
-          <div style="font-family:var(--courier);font-size:.6rem;letter-spacing:.3em;color:var(--amber-dim);margin-bottom:.8rem">TRACK_03.EXE</div>
-          <div style="font-family:var(--pixel);font-size:.9rem;color:var(--amber);margin-bottom:.8rem;text-shadow:0 0 10px rgba(255,176,0,.3);line-height:2">PROBLEM SOLVING</div>
-          <div style="font-family:var(--courier);font-size:.85rem;color:var(--amber-dim);margin-bottom:1rem;border-left:2px solid var(--amber-dim);padding-left:.8rem">"Master logic and speed"</div>
-          <p style="font-family:var(--courier);font-size:.82rem;color:rgba(255,176,0,.5);line-height:1.9">Competitive programming, algorithmic thinking, ICPC training. Sharpen your raw computational mind into a precision instrument.</p>
-          <div style="margin-top:1.2rem;font-family:var(--courier);font-size:.65rem;color:rgba(255,176,0,.3);letter-spacing:.15em">[ ALGORITHMS ] [ ICPC ] [ CODEFORCES ]</div>
+          <div style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.6rem;letter-spacing:.3em;color:var(--text-dim);margin-bottom:.8rem">TRACK_03.EXE</div>
+          <div style="font-family:'Press Start 2P', monospace;font-size:.9rem;color:var(--neon);margin-bottom:.8rem;text-shadow:0 0 10px rgba(0,255,136,.3);line-height:2">PROBLEM SOLVING</div>
+          <div style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.85rem;color:var(--text-dim);margin-bottom:1rem;border-left:2px solid var(--text-dim);padding-left:.8rem">"Master logic and speed"</div>
+          <p style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.82rem;color:rgba(0,255,136,.5);line-height:1.9">Competitive programming, algorithmic thinking, ICPC training. Sharpen your raw computational mind into a precision instrument.</p>
+          <div style="margin-top:1.2rem;font-family:'Courier Prime', 'Courier New', monospace;font-size:.65rem;color:rgba(0,255,136,.3);letter-spacing:.15em">[ ALGORITHMS ] [ ICPC ] [ CODEFORCES ]</div>
         </div>
 
       </div>
@@ -842,7 +834,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </section>
 
   <!-- EVENTS -->
-  <section class="pub-section" id="pub-events" style="border-top:1px solid rgba(255,176,0,.15)">
+  <section class="pub-section" id="pub-events" style="border-top:1px solid rgba(0,255,136,.15)">
     <div style="max-width:1100px;margin:0 auto">
       <div class="ibm-sec-header">
         <span class="ibm-sec-label">C:\SCH\EVENTS> DIR /W</span>
@@ -850,13 +842,13 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="ibm-sec-div"></div>
       </div>
       <div id="pub-events-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:3rem">
-        <div style="text-align:center;padding:3rem;color:var(--amber-dim);font-family:var(--courier);font-size:.9rem;grid-column:1/-1">C:\SCH\EVENTS> loading...</div>
+        <div style="text-align:center;padding:3rem;color:var(--text-dim);font-family:'Courier Prime', 'Courier New', monospace;font-size:.9rem;grid-column:1/-1">C:\SCH\EVENTS> loading...</div>
       </div>
     </div>
   </section>
 
   <!-- LEADERBOARD -->
-  <section class="pub-section" id="pub-lb" style="border-top:1px solid rgba(255,176,0,.15)">
+  <section class="pub-section" id="pub-lb" style="border-top:1px solid rgba(0,255,136,.15)">
     <div style="max-width:800px;margin:0 auto">
       <div class="ibm-sec-header">
         <span class="ibm-sec-label">C:\SCH\RANKS> QUERY --TOP10</span>
@@ -864,31 +856,31 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="ibm-sec-div"></div>
       </div>
       <div id="pub-lb-list" style="margin-top:3rem">
-        <div style="text-align:center;padding:3rem;color:var(--amber-dim);font-family:var(--courier);font-size:.9rem">C:\SCH\RANKS> loading...</div>
+        <div style="text-align:center;padding:3rem;color:var(--text-dim);font-family:'Courier Prime', 'Courier New', monospace;font-size:.9rem">C:\SCH\RANKS> loading...</div>
       </div>
     </div>
   </section>
 
   <!-- JOIN -->
-  <section class="pub-section" id="pub-join" style="border-top:1px solid rgba(255,176,0,.15)">
+  <section class="pub-section" id="pub-join" style="border-top:1px solid rgba(0,255,136,.15)">
     <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start" class="join-pub-grid">
-      <div style="font-family:var(--courier)">
+      <div style="font-family:'Courier Prime', 'Courier New', monospace">
         <div class="ibm-sec-header" style="text-align:left">
           <span class="ibm-sec-label">C:\SCH\RECRUIT> APPLY.EXE</span>
           <h2 class="ibm-sec-title" style="text-align:left">JOIN THE HOUSE</h2>
           <div class="ibm-sec-div" style="margin-left:0"></div>
         </div>
-        <p style="color:rgba(255,176,0,.6);line-height:2;font-size:.9rem;margin:1.5rem 0">We don't care about your GPA. We care about how you think under pressure, how quickly you learn, and whether you have the drive to push past comfortable.</p>
+        <p style="color:rgba(0,255,136,.5);line-height:2;font-size:.9rem;margin:1.5rem 0">We don't care about your GPA. We care about how you think under pressure, how quickly you learn, and whether you have the drive to push past comfortable.</p>
         <ul style="list-style:none">
-          <li style="padding:.5rem 0;color:rgba(255,176,0,.55);font-size:.85rem;border-bottom:1px solid rgba(255,176,0,.08);display:flex;gap:.8rem"><span style="color:var(--amber)">&gt;&gt;</span> Private CTF labs &amp; challenge servers</li>
-          <li style="padding:.5rem 0;color:rgba(255,176,0,.55);font-size:.85rem;border-bottom:1px solid rgba(255,176,0,.08);display:flex;gap:.8rem"><span style="color:var(--amber)">&gt;&gt;</span> Direct mentorship from senior members</li>
-          <li style="padding:.5rem 0;color:rgba(255,176,0,.55);font-size:.85rem;border-bottom:1px solid rgba(255,176,0,.08);display:flex;gap:.8rem"><span style="color:var(--amber)">&gt;&gt;</span> Team entry to national competitions</li>
-          <li style="padding:.5rem 0;color:rgba(255,176,0,.55);font-size:.85rem;border-bottom:1px solid rgba(255,176,0,.08);display:flex;gap:.8rem"><span style="color:var(--amber)">&gt;&gt;</span> Internal workshops not available publicly</li>
-          <li style="padding:.5rem 0;color:rgba(255,176,0,.55);font-size:.85rem;display:flex;gap:.8rem"><span style="color:var(--amber)">&gt;&gt;</span> Elite network of alumni &amp; industry contacts</li>
+          <li style="padding:.5rem 0;color:rgba(0,255,136,.35);font-size:.85rem;border-bottom:1px solid rgba(0,255,136,.08);display:flex;gap:.8rem"><span style="color:var(--neon)">&gt;&gt;</span> Private CTF labs &amp; challenge servers</li>
+          <li style="padding:.5rem 0;color:rgba(0,255,136,.35);font-size:.85rem;border-bottom:1px solid rgba(0,255,136,.08);display:flex;gap:.8rem"><span style="color:var(--neon)">&gt;&gt;</span> Direct mentorship from senior members</li>
+          <li style="padding:.5rem 0;color:rgba(0,255,136,.35);font-size:.85rem;border-bottom:1px solid rgba(0,255,136,.08);display:flex;gap:.8rem"><span style="color:var(--neon)">&gt;&gt;</span> Team entry to national competitions</li>
+          <li style="padding:.5rem 0;color:rgba(0,255,136,.35);font-size:.85rem;border-bottom:1px solid rgba(0,255,136,.08);display:flex;gap:.8rem"><span style="color:var(--neon)">&gt;&gt;</span> Internal workshops not available publicly</li>
+          <li style="padding:.5rem 0;color:rgba(0,255,136,.35);font-size:.85rem;display:flex;gap:.8rem"><span style="color:var(--neon)">&gt;&gt;</span> Elite network of alumni &amp; industry contacts</li>
         </ul>
       </div>
-      <div style="background:var(--ibm-bg2);border:1px solid var(--ibm-border);padding:2rem">
-        <div style="font-family:var(--courier);font-size:.7rem;color:var(--amber-dim);letter-spacing:.15em;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,176,0,.1);padding-bottom:.8rem">IBM PERSONAL COMPUTER &nbsp;|&nbsp; RECRUITMENT TERMINAL v2.1</div>
+      <div style="background:#030a05;border:1px solid var(--border);padding:2rem">
+        <div style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:.15em;margin-bottom:1.5rem;border-bottom:1px solid rgba(0,255,136,.1);padding-bottom:.8rem">IBM PERSONAL COMPUTER &nbsp;|&nbsp; RECRUITMENT TERMINAL v2.1</div>
         <div id="pub-join-fields">
           <div class="ibm-form-field"><label>OPERATIVE NAME</label><input type="text" id="pj-name" placeholder="Full name"></div>
           <div class="ibm-form-field"><label>SECURE CHANNEL</label><input type="email" id="pj-email" placeholder="your@email.com"></div>
@@ -910,41 +902,41 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
               <option value="expert">Senior - Already dangerous</option>
             </select>
           </div>
-          <div id="pj-error" style="color:#ff6600;font-family:var(--courier);font-size:.85rem;min-height:1.2rem;margin-top:.5rem"></div>
+          <div id="pj-error" style="color:#ff6600;font-family:'Courier Prime', 'Courier New', monospace;font-size:.85rem;min-height:1.2rem;margin-top:.5rem"></div>
           <button class="ibm-submit" onclick="submitJoin()" style="margin-top:1rem">[ INITIATE RECRUITMENT ]</button>
         </div>
-        <div id="pub-join-success" style="display:none;font-family:var(--courier);font-size:1rem;color:var(--amber);line-height:2.5;text-align:center;padding:2rem">
+        <div id="pub-join-success" style="display:none;font-family:'Courier Prime', 'Courier New', monospace;font-size:1rem;color:var(--neon);line-height:2.5;text-align:center;padding:2rem">
           <div>C:\SCH\RECRUIT> processing...</div>
           <div>APPLICATION RECEIVED.</div>
           <div>AWAITING ADMIN APPROVAL.</div>
           <div>CHECK EMAIL FOR UPDATES.</div>
-          <div style="font-family:var(--pixel);font-size:1.5rem;margin-top:1rem;text-shadow:0 0 15px var(--amber)">[OK]</div>
+          <div style="font-family:'Press Start 2P', monospace;font-size:1.5rem;margin-top:1rem;text-shadow:0 0 15px var(--neon)">[OK]</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="ibm-footer">
-    <div style="font-family:var(--pixel);font-size:1rem;color:var(--amber);text-shadow:0 0 15px var(--amber);letter-spacing:.15em;margin-bottom:.5rem">[ SCH ]</div>
-    <div style="font-family:var(--courier);font-size:.8rem;color:var(--amber-dim);margin:.5rem 0 2rem;letter-spacing:.25em">SNAKE CHAOS HOUSE &nbsp;|&nbsp; ALL SYSTEMS OPERATIONAL</div>
+  <footer style="border-top:2px solid var(--neon);padding:3rem 2rem;text-align:center;background:#000;font-family:'Courier Prime','Courier New',monospace">
+    <div style="font-family:'Press Start 2P', monospace;font-size:1rem;color:var(--neon);text-shadow:0 0 15px var(--neon);letter-spacing:.15em;margin-bottom:.5rem">[ SCH ]</div>
+    <div style="font-family:'Courier Prime', 'Courier New', monospace;font-size:.8rem;color:var(--text-dim);margin:.5rem 0 2rem;letter-spacing:.25em">SNAKE CHAOS HOUSE &nbsp;|&nbsp; ALL SYSTEMS OPERATIONAL</div>
     <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2rem;flex-wrap:wrap">
       <a href="https://instagram.com/snakechaoshouse" target="_blank"
-         style="display:flex;align-items:center;gap:.6rem;border:1px solid rgba(255,176,0,.25);padding:.6rem 1.3rem;color:var(--amber-dim);font-size:.75rem;letter-spacing:.15em;transition:all .3s;font-family:var(--courier);text-decoration:none"
+         style="display:flex;align-items:center;gap:.6rem;border:1px solid rgba(0,255,136,.25);padding:.6rem 1.3rem;color:var(--text-dim);font-size:.75rem;letter-spacing:.15em;transition:all .3s;font-family:'Courier Prime', 'Courier New', monospace;text-decoration:none"
          onmouseover="this.style.borderColor='#E1306C';this.style.color='#E1306C';this.style.boxShadow='0 0 15px rgba(225,48,108,0.2)'"
-         onmouseout="this.style.borderColor='rgba(255,176,0,.25)';this.style.color='var(--amber-dim)';this.style.boxShadow='none'">
+         onmouseout="this.style.borderColor='rgba(0,255,136,.25)';this.style.color='var(--text-dim)';this.style.boxShadow='none'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         INSTAGRAM @snakechaoshouse
       </a>
       <a href="https://tiktok.com/@snakechaoshouse.nmu" target="_blank"
-         style="display:flex;align-items:center;gap:.6rem;border:1px solid rgba(255,176,0,.25);padding:.6rem 1.3rem;color:var(--amber-dim);font-size:.75rem;letter-spacing:.15em;transition:all .3s;font-family:var(--courier);text-decoration:none"
+         style="display:flex;align-items:center;gap:.6rem;border:1px solid rgba(0,255,136,.25);padding:.6rem 1.3rem;color:var(--text-dim);font-size:.75rem;letter-spacing:.15em;transition:all .3s;font-family:'Courier Prime', 'Courier New', monospace;text-decoration:none"
          onmouseover="this.style.borderColor='#00f2ea';this.style.color='#00f2ea';this.style.boxShadow='0 0 15px rgba(0,242,234,0.2)'"
-         onmouseout="this.style.borderColor='rgba(255,176,0,.25)';this.style.color='var(--amber-dim)';this.style.boxShadow='none'">
+         onmouseout="this.style.borderColor='rgba(0,255,136,.25)';this.style.color='var(--text-dim)';this.style.boxShadow='none'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
         TIKTOK @snakechaoshouse.nmu
       </a>
     </div>
-    <div style="font-size:.65rem;color:rgba(255,176,0,.2);letter-spacing:.25em;font-family:var(--courier)">(C) 2025 SNAKE CHAOS HOUSE &nbsp;|&nbsp; UNAUTHORIZED ACCESS WILL BE TRACED &nbsp;|&nbsp; ALL RIGHTS RESERVED</div>
+    <div style="font-size:.65rem;color:rgba(0,255,136,.2);letter-spacing:.25em;font-family:'Courier Prime', 'Courier New', monospace">(C) 2025 SNAKE CHAOS HOUSE &nbsp;|&nbsp; UNAUTHORIZED ACCESS WILL BE TRACED &nbsp;|&nbsp; ALL RIGHTS RESERVED</div>
   </footer>
 
 </div>
@@ -1941,14 +1933,14 @@ async function loadPublicEvents() {
   const grid = document.getElementById('pub-events-grid');
   if (!data?.length) { grid.innerHTML = '<div style="color:var(--text-dim);font-family:var(--terminal);font-size:1.1rem;text-align:center;padding:3rem;grid-column:1/-1">> No upcoming events. Check back soon.</div>'; return; }
   grid.innerHTML = data.map(ev => `
-    <div style="background:var(--ibm-bg2);border:1px solid rgba(255,176,0,.2);padding:1.8rem;font-family:var(--courier);transition:all .2s;position:relative" onmouseover="this.style.borderColor='var(--amber)';this.style.boxShadow='0 0 15px rgba(255,176,0,.08)'" onmouseout="this.style.borderColor='rgba(255,176,0,.2)';this.style.boxShadow='none'">
-      <div style="font-size:.6rem;letter-spacing:.3em;color:var(--amber);border:1px solid rgba(255,176,0,.3);padding:.2rem .7rem;display:inline-block;margin-bottom:1rem;background:rgba(255,176,0,.06)">[UPCOMING]</div>
-      <div style="font-family:var(--courier);font-weight:700;font-size:.95rem;color:var(--amber);margin-bottom:.6rem">${ev.title}</div>
-      <p style="font-size:.82rem;color:rgba(255,176,0,.5);line-height:1.8;margin-bottom:1rem">${ev.description||''}</p>
-      <div style="font-size:.72rem;color:var(--amber-dim);display:flex;gap:1rem;flex-wrap:wrap">
+    <div style="background:#030a05;border:1px solid rgba(0,255,136,.2);padding:1.8rem;font-family:'Courier Prime', 'Courier New', monospace;transition:all .2s;position:relative" onmouseover="this.style.borderColor='var(--neon)';this.style.boxShadow='0 0 15px rgba(0,255,136,.08)'" onmouseout="this.style.borderColor='rgba(0,255,136,.2)';this.style.boxShadow='none'">
+      <div style="font-size:.6rem;letter-spacing:.3em;color:var(--neon);border:1px solid rgba(0,255,136,.3);padding:.2rem .7rem;display:inline-block;margin-bottom:1rem;background:rgba(0,255,136,.06)">[UPCOMING]</div>
+      <div style="font-family:'Courier Prime', 'Courier New', monospace;font-weight:700;font-size:.95rem;color:var(--neon);margin-bottom:.6rem">${ev.title}</div>
+      <p style="font-size:.82rem;color:rgba(0,255,136,.5);line-height:1.8;margin-bottom:1rem">${ev.description||''}</p>
+      <div style="font-size:.72rem;color:var(--text-dim);display:flex;gap:1rem;flex-wrap:wrap">
         <span>DATE: ${ev.date}</span>${ev.time?'<span>TIME: '+ev.time+'</span>':''}
       </div>
-      <a href="#pub-join" style="display:block;text-align:center;margin-top:1.2rem;font-family:var(--courier);font-size:.75rem;letter-spacing:.2em;color:var(--ibm-bg);background:var(--amber);padding:.6rem;text-decoration:none;transition:all .2s;box-shadow:2px 2px 0 rgba(0,0,0,.4)" onmouseover="this.style.background='#ffc933'" onmouseout="this.style.background='var(--amber)'">[REGISTER]</a>
+      <a href="#pub-join" style="display:block;text-align:center;margin-top:1.2rem;font-family:'Courier Prime', 'Courier New', monospace;font-size:.75rem;letter-spacing:.2em;color:#000;background:var(--neon);padding:.6rem;text-decoration:none;transition:all .2s;box-shadow:2px 2px 0 rgba(0,0,0,.4)" onmouseover="this.style.background='#00cc6a'" onmouseout="this.style.background='var(--neon)'">[REGISTER]</a>
     </div>`).join('');
 }
 async function loadPublicLeaderboard() {
@@ -1957,18 +1949,18 @@ async function loadPublicLeaderboard() {
   if (!data?.length) { el.innerHTML = '<div style="color:var(--text-dim);font-family:var(--terminal);font-size:1.1rem;text-align:center;padding:3rem">> No data yet.</div>'; return; }
   const max = data[0]?.points || 1;
   el.innerHTML = `
-    <div style="display:grid;grid-template-columns:50px 1fr 80px;gap:1rem;padding:.6rem 1rem;font-size:.6rem;letter-spacing:.3em;color:var(--amber-dim);background:rgba(255,176,0,.05);border:1px solid rgba(255,176,0,.2);border-bottom:none;font-family:var(--courier)"><span>RANK</span><span>OPERATIVE</span><span style="text-align:right">PTS</span></div>
+    <div style="display:grid;grid-template-columns:50px 1fr 80px;gap:1rem;padding:.6rem 1rem;font-size:.6rem;letter-spacing:.3em;color:var(--text-dim);background:rgba(0,255,136,.05);border:1px solid rgba(0,255,136,.2);border-bottom:none;font-family:'Courier Prime', 'Courier New', monospace"><span>RANK</span><span>OPERATIVE</span><span style="text-align:right">PTS</span></div>
     ${data.map((m,i) => {
       const r = i+1;
       const rankStr = r===1?'[1ST]':r===2?'[2ND]':r===3?'[3RD]':'[#'+r+']';
-      const rankColor = r===1?'var(--amber)':r===2?'rgba(255,176,0,.7)':r===3?'rgba(255,176,0,.5)':'rgba(255,176,0,.35)';
-      return `<div style="display:grid;grid-template-columns:50px 1fr 80px;gap:1rem;padding:.9rem 1rem;border:1px solid rgba(255,176,0,.08);border-top:none;align-items:center;font-family:var(--courier);background:${r===1?'rgba(255,176,0,.06)':r===2?'rgba(255,176,0,.03)':'transparent'};transition:background .2s" onmouseover="this.style.background='rgba(255,176,0,.05)'" onmouseout="this.style.background='${r===1?'rgba(255,176,0,.06)':r===2?'rgba(255,176,0,.03)':'transparent'}'">
-        <span style="font-family:var(--courier);font-weight:700;font-size:.75rem;color:${rankColor}">${rankStr}</span>
+      const rankColor = r===1?'var(--neon)':r===2?'rgba(0,255,136,.7)':r===3?'rgba(0,255,136,.5)':'rgba(0,255,136,.35)';
+      return `<div style="display:grid;grid-template-columns:50px 1fr 80px;gap:1rem;padding:.9rem 1rem;border:1px solid rgba(0,255,136,.08);border-top:none;align-items:center;font-family:'Courier Prime', 'Courier New', monospace;background:${r===1?'rgba(0,255,136,.06)':r===2?'rgba(0,255,136,.03)':'transparent'};transition:background .2s" onmouseover="this.style.background='rgba(0,255,136,.05)'" onmouseout="this.style.background='${r===1?'rgba(0,255,136,.06)':r===2?'rgba(0,255,136,.03)':'transparent'}'">
+        <span style="font-family:'Courier Prime', 'Courier New', monospace;font-weight:700;font-size:.75rem;color:${rankColor}">${rankStr}</span>
         <div style="display:flex;align-items:center;gap:.8rem">
-          <div style="width:28px;height:28px;background:rgba(255,176,0,.08);border:1px solid rgba(255,176,0,.2);display:flex;align-items:center;justify-content:center;font-family:var(--courier);font-size:.65rem;font-weight:700;color:var(--amber)">${(m.name||'??').substring(0,2).toUpperCase()}</div>
-          <div><div style="font-size:.88rem;color:rgba(255,176,0,.85)">${m.name}</div><div style="font-size:.72rem;color:var(--amber-dim)">${m.handle||''} [${(m.track||'—').toUpperCase()}]</div></div>
+          <div style="width:28px;height:28px;background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);display:flex;align-items:center;justify-content:center;font-family:'Courier Prime', 'Courier New', monospace;font-size:.65rem;font-weight:700;color:var(--neon)">${(m.name||'??').substring(0,2).toUpperCase()}</div>
+          <div><div style="font-size:.88rem;color:rgba(0,255,136,.85)">${m.name}</div><div style="font-size:.72rem;color:var(--text-dim)">${m.handle||''} [${(m.track||'—').toUpperCase()}]</div></div>
         </div>
-        <div style="font-family:var(--courier);font-weight:700;font-size:.85rem;color:var(--amber);text-align:right">${(m.points||0).toLocaleString()}</div>
+        <div style="font-family:'Courier Prime', 'Courier New', monospace;font-weight:700;font-size:.85rem;color:var(--neon);text-align:right">${(m.points||0).toLocaleString()}</div>
       </div>`;
     }).join('')}`;
 }
