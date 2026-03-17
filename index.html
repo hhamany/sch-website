@@ -266,39 +266,376 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .lb-pts-col{font-family:var(--display);font-weight:700;font-size:.9rem;color:var(--neon);text-align:right}
 
 /* Public landing */
-#public-landing{display:none;position:fixed;inset:0;z-index:300;overflow-y:auto;background:#000}
+/* ============================================================
+   IBM VINTAGE TERMINAL — PUBLIC LANDING
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Press+Start+2P&display=swap');
+
+:root {
+  --amber: #FFB000;
+  --amber-dim: #8B6000;
+  --amber-dark: #1a0e00;
+  --amber-glow: rgba(255,176,0,0.15);
+  --amber-glow-strong: rgba(255,176,0,0.35);
+  --crt-green: #33ff33;
+  --ibm-bg: #0a0800;
+  --ibm-bg2: #110f00;
+  --ibm-border: rgba(255,176,0,0.25);
+  --pixel: 'Press Start 2P', monospace;
+  --courier: 'Courier Prime', 'Courier New', monospace;
+}
+
+#public-landing{display:none;position:fixed;inset:0;z-index:300;overflow-y:auto;background:var(--ibm-bg);font-family:var(--courier)}
 #public-landing.active{display:block}
-.landing-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;position:relative}
-.landing-title{font-family:var(--display);font-weight:900;font-size:clamp(3rem,9vw,9rem);line-height:.9;margin-bottom:1.5rem}
-.landing-title .t1{display:block;color:var(--neon);text-shadow:0 0 40px var(--neon),0 0 80px rgba(0,255,136,.3)}
-.landing-title .t2{display:block;font-size:.5em;letter-spacing:.35em;color:var(--text)}
-.landing-sub{font-family:var(--terminal);font-size:clamp(1.2rem,3vw,1.8rem);color:var(--text-dim);margin-bottom:3rem}
-.landing-sub .cur{display:inline-block;width:10px;height:1.1em;background:var(--neon);vertical-align:text-bottom;animation:blink 1s step-end infinite}
-.landing-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
-.land-btn{font-family:var(--display);font-weight:700;font-size:.85rem;letter-spacing:.2em;padding:1rem 2.5rem;transition:all .3s;display:inline-block}
-.land-btn.primary{color:#000;background:var(--neon);clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);box-shadow:0 0 30px var(--neon-glow-strong)}
-.land-btn.primary:hover{transform:translateY(-2px);box-shadow:0 0 50px var(--neon)}
-.land-btn.secondary{color:var(--neon);border:1px solid var(--neon);clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%)}
-.land-btn.secondary:hover{background:var(--neon-glow)}
-.landing-stats{display:flex;gap:3rem;margin-top:4rem;flex-wrap:wrap;justify-content:center}
-.ls{text-align:center}
-.ls-num{font-family:var(--display);font-size:2.5rem;font-weight:900;color:var(--neon);text-shadow:0 0 15px var(--neon);display:block}
-.ls-label{font-size:.65rem;letter-spacing:.35em;color:var(--text-dim)}
-.land-terminal{position:absolute;bottom:2rem;left:2rem;font-family:var(--terminal);font-size:1rem;color:rgba(0,255,136,.4);line-height:2;text-align:left}
 
-/* Public nav */
-.pub-nav{position:fixed;top:0;left:0;right:0;z-index:400;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(0,0,0,.85);border-bottom:1px solid var(--border);backdrop-filter:blur(10px)}
-.pub-nav-logo{font-family:var(--display);font-weight:900;font-size:1.2rem;color:var(--neon);text-shadow:0 0 12px var(--neon);letter-spacing:.15em}
-.pub-nav-links{display:flex;gap:1.5rem;list-style:none}
-.pub-nav-links a{font-size:.75rem;letter-spacing:.15em;color:var(--text-dim);transition:color .2s}
-.pub-nav-links a:hover{color:var(--neon)}
-.pub-nav-login{font-family:var(--display);font-size:.65rem;font-weight:700;letter-spacing:.2em;color:#000;background:var(--neon);padding:.5rem 1.2rem;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);transition:all .2s;cursor:crosshair}
-.pub-nav-login:hover{box-shadow:0 0 20px var(--neon)}
+/* Heavy CRT scanlines on landing only */
+#public-landing::before{
+  content:'';position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.4) 3px,rgba(0,0,0,.4) 4px);
+  z-index:9999;pointer-events:none
+}
+/* Phosphor vignette */
+#public-landing::after{
+  content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.85) 100%);
+  z-index:9998;pointer-events:none
+}
 
-/* TRACKS section public */
-.pub-section{padding:6rem 2rem;position:relative;z-index:2}
-.track-card-pub{background:rgba(0,255,136,.03);border:1px solid var(--border);padding:2.5rem 2rem;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));transition:all .3s;cursor:default}
-.track-card-pub:hover{border-color:var(--neon);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,255,136,.08)}
+/* NAV — IBM style top bar */
+.pub-nav{
+  position:fixed;top:0;left:0;right:0;z-index:10000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.7rem 2rem;
+  background:var(--ibm-bg);
+  border-bottom:2px solid var(--amber);
+  font-family:var(--courier);
+}
+.pub-nav-logo{
+  font-family:var(--pixel);font-size:.7rem;
+  color:var(--amber);
+  text-shadow:0 0 10px var(--amber),0 0 20px rgba(255,176,0,.5);
+  letter-spacing:.1em;
+  animation:ibmFlicker 4s infinite;
+}
+.pub-nav-links{display:flex;gap:2rem;list-style:none}
+.pub-nav-links a{
+  font-size:.75rem;letter-spacing:.2em;
+  color:var(--amber-dim);
+  transition:color .1s;
+  text-transform:uppercase;
+  font-family:var(--courier);
+}
+.pub-nav-links a:hover{color:var(--amber);text-shadow:0 0 8px var(--amber)}
+.pub-nav-login{
+  font-family:var(--pixel);font-size:.5rem;letter-spacing:.1em;
+  color:var(--ibm-bg);background:var(--amber);
+  border:none;padding:.6rem 1rem;
+  cursor:crosshair;transition:all .2s;
+  text-shadow:none;
+  box-shadow:0 0 15px var(--amber-glow-strong), 3px 3px 0 rgba(0,0,0,.5);
+}
+.pub-nav-login:hover{background:#ffc933;box-shadow:0 0 25px var(--amber),3px 3px 0 rgba(0,0,0,.5)}
+
+/* HERO */
+.landing-hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:8rem 2rem 4rem;
+  position:relative;
+}
+
+/* Binary rain bg text */
+.landing-hero::before{
+  content:'01001111 01010010 00110001 00110001 01001000 01000001 01000011 01001011 00110001 01001110 01000111 01010011 01011001 01010011 01010100 01000101 01001101 00110001 01001110 01001001 01010100 01001001 01000001 01001100 01001001 01011010 01000101 01000100 01000011 01001000 01000001 01001111 01010011';
+  position:absolute;inset:0;
+  font-family:var(--courier);font-size:.55rem;
+  color:rgba(255,176,0,.04);
+  word-break:break-all;line-height:1.8;
+  padding:2rem;
+  pointer-events:none;
+  overflow:hidden;
+  letter-spacing:.1em;
+}
+
+.ibm-badge{
+  font-family:var(--courier);
+  font-size:.75rem;letter-spacing:.5em;
+  color:var(--amber-dim);
+  border:1px solid var(--amber-dim);
+  padding:.3rem 1.5rem;
+  margin-bottom:2.5rem;
+  display:inline-block;
+  text-transform:uppercase;
+}
+
+/* PIXEL TITLE */
+.landing-title{
+  font-family:var(--pixel);
+  line-height:1.8;
+  margin-bottom:2rem;
+  position:relative;
+}
+.landing-title .t1{
+  display:block;
+  font-size:clamp(1.2rem,4vw,3.5rem);
+  color:var(--amber);
+  text-shadow:0 0 20px var(--amber),0 0 40px rgba(255,176,0,.4),0 0 80px rgba(255,176,0,.2);
+  animation:ibmFlicker 3s infinite;
+  letter-spacing:.05em;
+  margin-bottom:.5rem;
+}
+.landing-title .t2{
+  display:block;
+  font-size:clamp(.5rem,1.5vw,1.1rem);
+  color:rgba(255,176,0,.5);
+  letter-spacing:.3em;
+}
+
+/* TYPEWRITER SUBTITLE */
+.landing-sub{
+  font-family:var(--courier);
+  font-size:clamp(1rem,2.5vw,1.4rem);
+  color:var(--amber-dim);
+  margin-bottom:3rem;
+  letter-spacing:.08em;
+  min-height:2rem;
+}
+.landing-sub .cur{
+  display:inline-block;width:10px;height:1em;
+  background:var(--amber);vertical-align:text-bottom;
+  animation:blink .8s step-end infinite;
+}
+
+/* BUTTONS */
+.landing-btns{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;margin-bottom:1rem}
+.land-btn{
+  font-family:var(--pixel);font-size:.5rem;letter-spacing:.1em;
+  padding:.9rem 2rem;transition:all .2s;display:inline-block;
+  text-transform:uppercase;cursor:crosshair;
+}
+.land-btn.primary{
+  color:var(--ibm-bg);background:var(--amber);border:none;
+  box-shadow:0 0 20px var(--amber-glow-strong),4px 4px 0 rgba(0,0,0,.6);
+}
+.land-btn.primary:hover{background:#ffc933;box-shadow:0 0 35px var(--amber),4px 4px 0 rgba(0,0,0,.6);transform:translate(-1px,-1px)}
+.land-btn.secondary{
+  color:var(--amber);background:transparent;
+  border:2px solid var(--amber);
+  box-shadow:0 0 10px var(--amber-glow),4px 4px 0 rgba(255,176,0,.2);
+}
+.land-btn.secondary:hover{background:rgba(255,176,0,.08);box-shadow:0 0 20px var(--amber-glow)}
+
+/* IBM STATS BAR */
+.ibm-stats-bar{
+  margin-top:4rem;
+  border:1px solid var(--ibm-border);
+  padding:0;
+  display:flex;flex-wrap:wrap;
+  font-family:var(--courier);
+  width:min(700px,90vw);
+}
+.ibm-stat{
+  flex:1;min-width:140px;
+  padding:1.2rem 1.5rem;
+  border-right:1px solid var(--ibm-border);
+  text-align:center;
+  position:relative;
+}
+.ibm-stat:last-child{border-right:none}
+.ibm-stat-top{
+  font-size:.6rem;letter-spacing:.3em;
+  color:var(--amber-dim);
+  text-transform:uppercase;
+  margin-bottom:.5rem;
+  display:block;
+}
+.ibm-stat-num{
+  font-family:var(--pixel);font-size:1.2rem;
+  color:var(--amber);
+  text-shadow:0 0 10px var(--amber);
+  display:block;
+}
+
+/* IBM SYSTEM STATUS BOTTOM */
+.ibm-status-line{
+  position:absolute;bottom:2rem;left:0;right:0;
+  display:flex;justify-content:space-between;
+  padding:0 2rem;
+  font-family:var(--courier);font-size:.7rem;
+  color:rgba(255,176,0,.3);
+  letter-spacing:.15em;
+}
+
+/* SECTIONS */
+.pub-section{padding:5rem 2rem;position:relative;z-index:2;background:var(--ibm-bg)}
+
+/* Section headers — IBM style */
+.ibm-sec-header{
+  text-align:center;margin-bottom:3rem;
+  font-family:var(--courier);
+}
+.ibm-sec-label{
+  display:block;
+  font-size:.7rem;letter-spacing:.5em;
+  color:var(--amber-dim);
+  margin-bottom:1rem;
+  text-transform:uppercase;
+}
+.ibm-sec-title{
+  font-family:var(--pixel);
+  font-size:clamp(.9rem,2.5vw,1.8rem);
+  color:var(--amber);
+  text-shadow:0 0 15px rgba(255,176,0,.4);
+  letter-spacing:.05em;
+  line-height:2;
+}
+.ibm-sec-div{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--amber),transparent);
+  margin:1.5rem auto 0;
+  max-width:400px;
+}
+
+/* TRACK CARDS — IBM terminal box style */
+.track-card-pub{
+  background:var(--ibm-bg2);
+  border:1px solid var(--ibm-border);
+  padding:2rem;
+  transition:all .2s;
+  cursor:default;
+  position:relative;
+  font-family:var(--courier);
+}
+.track-card-pub::before{
+  content:'┌─────────────────────┐';
+  position:absolute;top:-1px;left:-1px;right:-1px;
+  font-family:var(--courier);font-size:.6rem;
+  color:rgba(255,176,0,.15);
+  overflow:hidden;white-space:nowrap;
+}
+.track-card-pub:hover{
+  border-color:var(--amber);
+  box-shadow:0 0 20px rgba(255,176,0,.1),inset 0 0 30px rgba(255,176,0,.03);
+}
+
+/* ABOUT terminal box */
+.ibm-terminal-box{
+  background:var(--ibm-bg2);
+  border:1px solid var(--ibm-border);
+  padding:2rem;
+  font-family:var(--courier);
+  font-size:.95rem;
+  line-height:2;
+  position:relative;
+}
+.ibm-terminal-box::before{
+  content:'IBM PERSONAL COMPUTER DOS VERSION 3.30  (C)COPYRIGHT IBM CORP 1981, 1987';
+  display:block;
+  font-size:.6rem;letter-spacing:.05em;
+  color:rgba(255,176,0,.2);
+  margin-bottom:1rem;
+  border-bottom:1px solid rgba(255,176,0,.1);
+  padding-bottom:.8rem;
+}
+.itb-cmd{color:var(--amber-dim)}
+.itb-out{color:rgba(255,176,0,.75)}
+.itb-success{color:var(--amber);text-shadow:0 0 5px rgba(255,176,0,.3)}
+.itb-warn{color:#ff8c00}
+
+/* LEADERBOARD IBM table style */
+.ibm-lb-header{
+  display:grid;grid-template-columns:60px 1fr 80px;
+  gap:1rem;padding:.6rem 1rem;
+  font-size:.6rem;letter-spacing:.3em;
+  color:var(--amber-dim);
+  background:rgba(255,176,0,.05);
+  border:1px solid var(--ibm-border);
+  border-bottom:none;
+  font-family:var(--courier);
+  text-transform:uppercase;
+}
+.ibm-lb-row{
+  display:grid;grid-template-columns:60px 1fr 80px;
+  gap:1rem;padding:.9rem 1rem;
+  border:1px solid rgba(255,176,0,.08);
+  border-top:none;
+  align-items:center;
+  transition:all .15s;
+  font-family:var(--courier);
+  cursor:default;
+}
+.ibm-lb-row:hover{background:rgba(255,176,0,.04);border-color:rgba(255,176,0,.15)}
+.ibm-lb-row.r1{background:rgba(255,176,0,.06);border-color:rgba(255,176,0,.2)}
+
+/* FORM IBM style */
+.ibm-form-field{margin-bottom:1rem}
+.ibm-form-field label{
+  display:block;font-size:.7rem;letter-spacing:.25em;
+  color:var(--amber-dim);margin-bottom:.3rem;
+  font-family:var(--courier);text-transform:uppercase;
+}
+.ibm-form-field label::before{content:'C:\> ';color:rgba(255,176,0,.3)}
+.ibm-form-field input,.ibm-form-field select{
+  width:100%;
+  background:rgba(0,0,0,.9);
+  border:none;border-bottom:1px solid var(--ibm-border);
+  border-left:2px solid var(--amber);
+  color:var(--amber);
+  font-family:var(--courier);font-size:.95rem;
+  padding:.6rem .8rem;outline:none;
+  transition:border-color .2s;
+}
+.ibm-form-field input:focus,.ibm-form-field select:focus{
+  border-bottom-color:var(--amber);
+  border-left-color:var(--amber);
+  box-shadow:0 2px 0 var(--amber);
+  background:rgba(255,176,0,.03);
+}
+.ibm-form-field input::placeholder{color:rgba(255,176,0,.25)}
+.ibm-form-field select option{background:#0a0800;color:var(--amber)}
+.ibm-submit{
+  width:100%;
+  font-family:var(--pixel);font-size:.5rem;letter-spacing:.1em;
+  color:var(--ibm-bg);background:var(--amber);border:none;
+  padding:1rem;cursor:crosshair;
+  box-shadow:0 0 15px var(--amber-glow-strong),4px 4px 0 rgba(0,0,0,.5);
+  transition:all .2s;margin-top:.5rem;
+}
+.ibm-submit:hover{background:#ffc933;box-shadow:0 0 25px var(--amber)}
+
+/* FOOTER IBM */
+.ibm-footer{
+  border-top:2px solid var(--amber);
+  padding:3rem 2rem;
+  text-align:center;
+  background:var(--ibm-bg);
+  font-family:var(--courier);
+}
+
+/* ANIMATIONS */
+@keyframes ibmFlicker{
+  0%,95%,100%{opacity:1}
+  96%{opacity:.7}
+  97%{opacity:1}
+  98%{opacity:.5}
+  99%{opacity:1}
+}
+@keyframes ibmScan{
+  0%{transform:translateY(-100%)}
+  100%{transform:translateY(100vh)}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .pub-nav-links{display:none}
+  .landing-title .t1{font-size:1.5rem}
+  .ibm-stats-bar{flex-direction:column}
+  .ibm-stat{border-right:none;border-bottom:1px solid var(--ibm-border)}
+  .pub-about-grid{grid-template-columns:1fr !important}
+  .join-pub-grid{grid-template-columns:1fr !important}
+}
 
 /* Animations */
 @keyframes blink{50%{opacity:0}}
@@ -373,178 +710,243 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
      PUBLIC LANDING
      ============================ -->
 <div id="public-landing">
+
+  <!-- IBM NAV -->
   <nav class="pub-nav">
-    <span class="pub-nav-logo">SCH</span>
+    <span class="pub-nav-logo">[ SCH ]</span>
     <ul class="pub-nav-links">
       <li><a href="#pub-about">ABOUT</a></li>
       <li><a href="#pub-tracks">TRACKS</a></li>
       <li><a href="#pub-events">EVENTS</a></li>
       <li><a href="#pub-lb">LEADERBOARD</a></li>
     </ul>
-    <button class="pub-nav-login" onclick="showAuth()">MEMBER LOGIN</button>
+    <button class="pub-nav-login" onclick="showAuth()">[ LOGIN ]</button>
   </nav>
 
+  <!-- IBM HERO -->
   <div class="landing-hero">
-    <div style="font-family:var(--terminal);font-size:1rem;color:var(--neon);letter-spacing:.4em;margin-bottom:1.5rem;opacity:.7">// EST. 2024 — CLASSIFIED //</div>
+    <div class="ibm-badge">EST. 2024 &nbsp;|&nbsp; CLASSIFIED &nbsp;|&nbsp; NMU</div>
+
     <h1 class="landing-title">
-      <span class="t1">SNAKE</span>
-      <span class="t2">CHAOS HOUSE</span>
+      <span class="t1">SNAKE CHAOS HOUSE</span>
+      <span class="t2">// UNIVERSITY TECH DIVISION //</span>
     </h1>
+
     <p class="landing-sub" id="land-sub">We build elite minds in chaos.<span class="cur"></span></p>
+
     <div class="landing-btns">
-      <a href="#pub-join" class="land-btn primary">JOIN THE HOUSE</a>
-      <button class="land-btn secondary" onclick="showAuth()">MEMBER LOGIN</button>
+      <a href="#pub-join" class="land-btn primary">[ JOIN THE HOUSE ]</a>
+      <button class="land-btn secondary" onclick="showAuth()">[ MEMBER LOGIN ]</button>
     </div>
-    <div class="landing-stats">
-      <div class="ls"><span class="ls-num" data-target="120">0</span><span class="ls-label">MEMBERS</span></div>
-      <div class="ls"><span class="ls-num" data-target="34">0</span><span class="ls-label">EVENTS</span></div>
-      <div class="ls"><span class="ls-num" data-target="15">0</span><span class="ls-label">WINS</span></div>
-      <div class="ls"><span class="ls-num" data-target="3">0</span><span class="ls-label">TRACKS</span></div>
+
+    <!-- IBM STATS TABLE -->
+    <div class="ibm-stats-bar">
+      <div class="ibm-stat">
+        <span class="ibm-stat-top">MEMBERS</span>
+        <span class="ibm-stat-num" data-target="120">0</span>
+      </div>
+      <div class="ibm-stat">
+        <span class="ibm-stat-top">EVENTS RAN</span>
+        <span class="ibm-stat-num" data-target="34">0</span>
+      </div>
+      <div class="ibm-stat">
+        <span class="ibm-stat-top">WINS</span>
+        <span class="ibm-stat-num" data-target="15">0</span>
+      </div>
+      <div class="ibm-stat">
+        <span class="ibm-stat-top">TRACKS</span>
+        <span class="ibm-stat-num" data-target="3">0</span>
+      </div>
     </div>
-    <div class="land-terminal">
-      <div>> initializing SCH_OS v3.1...</div>
-      <div>> encryption layer active</div>
-      <div>> access granted ✓</div>
+
+    <!-- STATUS BAR -->
+    <div class="ibm-status-line">
+      <span>SYS: ONLINE</span>
+      <span>MEM: 640K</span>
+      <span>SCH_OS v3.1</span>
+      <span>PRESS F1 FOR HELP</span>
     </div>
   </div>
 
-  <!-- PUBLIC ABOUT -->
-  <section class="pub-section" id="pub-about" style="background:linear-gradient(180deg,#000 0%,#001a0d 50%,#000 100%)">
+  <!-- ABOUT -->
+  <section class="pub-section" id="pub-about" style="border-top:1px solid rgba(255,176,0,.15)">
     <div style="max-width:1100px;margin:0 auto">
-      <div class="sec-header" style="text-align:center">
-        <span class="sec-tag">// SYSTEM INTEL</span>
-        <h2 class="sec-title">ABOUT <span>US</span></h2>
-        <div class="sec-line" style="margin:1rem auto 0"></div>
+      <div class="ibm-sec-header">
+        <span class="ibm-sec-label">C:\SCH\SYSTEM> TYPE ABOUT.TXT</span>
+        <h2 class="ibm-sec-title">ABOUT SCH</h2>
+        <div class="ibm-sec-div"></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start" class="pub-about-grid">
-        <div>
-          <p style="color:var(--text-dim);line-height:1.9;font-size:1rem;margin-bottom:1.2rem">Snake Chaos House is not your average university club. We are a <strong style="color:var(--neon)">digital war room</strong>, a forge of elite engineers, and a sanctuary for those who think in systems, exploit vulnerabilities, and build the impossible.</p>
-          <p style="color:var(--text-dim);line-height:1.9;font-size:1rem;margin-bottom:1.2rem">We operate at the intersection of <strong style="color:var(--neon)">cybersecurity, artificial intelligence, and competitive programming</strong>. Our members don't just study technology — they bend it.</p>
-          <blockquote style="font-family:var(--terminal);font-size:1.6rem;border-left:3px solid var(--neon);padding-left:1.2rem;margin-top:1.5rem;color:var(--text)">"A tech house where chaos creates hackers, AI engineers, and problem solvers."</blockquote>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start" class="pub-about-grid">
+        <div style="font-family:var(--courier)">
+          <p style="color:rgba(255,176,0,.7);line-height:2;font-size:.95rem;margin-bottom:1.2rem">Snake Chaos House is not your average university club. We are a <strong style="color:var(--amber)">digital war room</strong>, a forge of elite engineers, and a sanctuary for those who think in systems, exploit vulnerabilities, and build the impossible.</p>
+          <p style="color:rgba(255,176,0,.7);line-height:2;font-size:.95rem;margin-bottom:1.5rem">We operate at the intersection of <strong style="color:var(--amber)">cybersecurity, artificial intelligence, and competitive programming</strong>. Our members don't just study technology &#8212; they bend it.</p>
+          <blockquote style="font-family:var(--courier);font-size:1.1rem;border-left:3px solid var(--amber);padding-left:1.2rem;color:var(--amber);line-height:2;font-style:italic">"A tech house where chaos creates hackers, AI engineers, and problem solvers."</blockquote>
         </div>
-        <div style="background:rgba(0,255,136,.03);border:1px solid var(--border);padding:2rem;font-family:var(--terminal);font-size:1.1rem;color:var(--neon);line-height:2">
-          <div style="color:var(--text-dim);margin-bottom:1rem;font-size:.8rem;letter-spacing:.3em">● ● ●</div>
-          <div style="color:var(--text-dim)">[root@SCH ~]$ cat manifesto.txt</div>
-          <div style="color:var(--text);margin-top:.5rem">[1] We break things to understand them.</div>
-          <div style="color:var(--text)">[2] We build what others call impossible.</div>
-          <div style="color:var(--text)">[3] We compete. We fail. We iterate.</div>
-          <div style="color:var(--text)">[4] No gatekeeping. Only meritocracy.</div>
-          <div style="color:var(--text)">[5] The chaos is the curriculum.</div>
-          <div style="color:var(--neon);margin-top:.5rem">[*] STATUS: ALWAYS RECRUITING</div>
-          <div style="color:#ffcc00">[!] CLEARANCE: NEED TO EARN IT</div>
-          <div style="color:var(--text-dim)">[root@SCH ~]$ _</div>
+        <div class="ibm-terminal-box">
+          <div class="itb-cmd">C:\SCH> cat manifesto.txt</div>
+          <div class="itb-out">&nbsp;</div>
+          <div class="itb-out">SCH CORE PRINCIPLES</div>
+          <div class="itb-out">====================</div>
+          <div class="itb-out">&nbsp;</div>
+          <div class="itb-out">[1] We break things to understand them.</div>
+          <div class="itb-out">[2] We build what others call impossible.</div>
+          <div class="itb-out">[3] We compete. We fail. We iterate.</div>
+          <div class="itb-out">[4] No gatekeeping. Only meritocracy.</div>
+          <div class="itb-out">[5] The chaos is the curriculum.</div>
+          <div class="itb-out">&nbsp;</div>
+          <div class="itb-success">[*] STATUS: ALWAYS RECRUITING</div>
+          <div class="itb-warn">[!] CLEARANCE: NEED TO EARN IT</div>
+          <div class="itb-out">&nbsp;</div>
+          <div class="itb-cmd">C:\SCH> _<span style="animation:blink .8s step-end infinite;background:var(--amber);color:var(--amber)">|</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PUBLIC TRACKS -->
-  <section class="pub-section" id="pub-tracks">
+  <!-- TRACKS -->
+  <section class="pub-section" id="pub-tracks" style="border-top:1px solid rgba(255,176,0,.15)">
     <div style="max-width:1100px;margin:0 auto">
-      <div class="sec-header" style="text-align:center"><span class="sec-tag">// SELECT DISCIPLINE</span><h2 class="sec-title">OUR <span>TRACKS</span></h2><div class="sec-line" style="margin:1rem auto 0"></div></div>
+      <div class="ibm-sec-header">
+        <span class="ibm-sec-label">C:\SCH\TRACKS> DIR</span>
+        <h2 class="ibm-sec-title">SELECT TRACK</h2>
+        <div class="ibm-sec-div"></div>
+      </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:3rem">
-        <div class="track-card-pub"><span style="font-size:2.5rem;display:block;margin-bottom:1rem;filter:drop-shadow(0 0 8px var(--neon))">🛡️</span><div style="font-size:.65rem;letter-spacing:.3em;color:var(--text-dim);margin-bottom:.3rem">TRACK_01</div><div style="font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--neon);margin-bottom:.5rem">CYBER SECURITY</div><div style="font-family:var(--terminal);font-size:1.1rem;color:var(--text);margin-bottom:.8rem">"Think like a hacker"</div><p style="font-size:.82rem;color:var(--text-dim);line-height:1.7">Master pentesting, CTF competitions, reverse engineering, and real-world attack simulation. You'll exploit and fortify systems others take for granted.</p></div>
-        <div class="track-card-pub"><span style="font-size:2.5rem;display:block;margin-bottom:1rem;filter:drop-shadow(0 0 8px #7b61ff)">🤖</span><div style="font-size:.65rem;letter-spacing:.3em;color:var(--text-dim);margin-bottom:.3rem">TRACK_02</div><div style="font-family:var(--display);font-weight:700;font-size:1.2rem;color:#7b61ff;margin-bottom:.5rem">AI & ROBOTICS</div><div style="font-family:var(--terminal);font-size:1.1rem;color:var(--text);margin-bottom:.8rem">"Build the future"</div><p style="font-size:.82rem;color:var(--text-dim);line-height:1.7">Train models, build autonomous systems, deploy intelligence. From neural networks to physical robots — you'll shape what comes next.</p></div>
-        <div class="track-card-pub"><span style="font-size:2.5rem;display:block;margin-bottom:1rem;filter:drop-shadow(0 0 8px #ff6b35)">⚡</span><div style="font-size:.65rem;letter-spacing:.3em;color:var(--text-dim);margin-bottom:.3rem">TRACK_03</div><div style="font-family:var(--display);font-weight:700;font-size:1.2rem;color:#ff6b35;margin-bottom:.5rem">PROBLEM SOLVING</div><div style="font-family:var(--terminal);font-size:1.1rem;color:var(--text);margin-bottom:.8rem">"Master logic and speed"</div><p style="font-size:.82rem;color:var(--text-dim);line-height:1.7">Competitive programming, algorithmic thinking, ICPC training. Sharpen your raw computational mind into a precision instrument.</p></div>
+
+        <div class="track-card-pub">
+          <div style="font-family:var(--courier);font-size:.6rem;letter-spacing:.3em;color:var(--amber-dim);margin-bottom:.8rem">TRACK_01.EXE</div>
+          <div style="font-family:var(--pixel);font-size:.9rem;color:var(--amber);margin-bottom:.8rem;text-shadow:0 0 10px rgba(255,176,0,.3);line-height:2">CYBER SECURITY</div>
+          <div style="font-family:var(--courier);font-size:.85rem;color:var(--amber-dim);margin-bottom:1rem;border-left:2px solid var(--amber-dim);padding-left:.8rem">"Think like a hacker"</div>
+          <p style="font-family:var(--courier);font-size:.82rem;color:rgba(255,176,0,.5);line-height:1.9">Master pentesting, CTF competitions, reverse engineering, and real-world attack simulation. Exploit and fortify systems others take for granted.</p>
+          <div style="margin-top:1.2rem;font-family:var(--courier);font-size:.65rem;color:rgba(255,176,0,.3);letter-spacing:.15em">[ PENTEST ] [ CTF ] [ OSINT ] [ MALWARE ]</div>
+        </div>
+
+        <div class="track-card-pub">
+          <div style="font-family:var(--courier);font-size:.6rem;letter-spacing:.3em;color:var(--amber-dim);margin-bottom:.8rem">TRACK_02.EXE</div>
+          <div style="font-family:var(--pixel);font-size:.9rem;color:var(--amber);margin-bottom:.8rem;text-shadow:0 0 10px rgba(255,176,0,.3);line-height:2">AI &amp; ROBOTICS</div>
+          <div style="font-family:var(--courier);font-size:.85rem;color:var(--amber-dim);margin-bottom:1rem;border-left:2px solid var(--amber-dim);padding-left:.8rem">"Build the future"</div>
+          <p style="font-family:var(--courier);font-size:.82rem;color:rgba(255,176,0,.5);line-height:1.9">Train models, build autonomous systems, deploy intelligence. From neural networks to physical robots &#8212; shape what comes next.</p>
+          <div style="margin-top:1.2rem;font-family:var(--courier);font-size:.65rem;color:rgba(255,176,0,.3);letter-spacing:.15em">[ DEEP LEARNING ] [ ROS ] [ LLMs ] [ CV ]</div>
+        </div>
+
+        <div class="track-card-pub">
+          <div style="font-family:var(--courier);font-size:.6rem;letter-spacing:.3em;color:var(--amber-dim);margin-bottom:.8rem">TRACK_03.EXE</div>
+          <div style="font-family:var(--pixel);font-size:.9rem;color:var(--amber);margin-bottom:.8rem;text-shadow:0 0 10px rgba(255,176,0,.3);line-height:2">PROBLEM SOLVING</div>
+          <div style="font-family:var(--courier);font-size:.85rem;color:var(--amber-dim);margin-bottom:1rem;border-left:2px solid var(--amber-dim);padding-left:.8rem">"Master logic and speed"</div>
+          <p style="font-family:var(--courier);font-size:.82rem;color:rgba(255,176,0,.5);line-height:1.9">Competitive programming, algorithmic thinking, ICPC training. Sharpen your raw computational mind into a precision instrument.</p>
+          <div style="margin-top:1.2rem;font-family:var(--courier);font-size:.65rem;color:rgba(255,176,0,.3);letter-spacing:.15em">[ ALGORITHMS ] [ ICPC ] [ CODEFORCES ]</div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- PUBLIC EVENTS (dynamic) -->
-  <section class="pub-section" id="pub-events" style="background:linear-gradient(180deg,#000 0%,#001508 50%,#000 100%)">
+  <!-- EVENTS -->
+  <section class="pub-section" id="pub-events" style="border-top:1px solid rgba(255,176,0,.15)">
     <div style="max-width:1100px;margin:0 auto">
-      <div class="sec-header" style="text-align:center"><span class="sec-tag">// ACTIVE OPERATIONS</span><h2 class="sec-title">UPCOMING <span>EVENTS</span></h2><div class="sec-line" style="margin:1rem auto 0"></div></div>
+      <div class="ibm-sec-header">
+        <span class="ibm-sec-label">C:\SCH\EVENTS> DIR /W</span>
+        <h2 class="ibm-sec-title">UPCOMING EVENTS</h2>
+        <div class="ibm-sec-div"></div>
+      </div>
       <div id="pub-events-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:3rem">
-        <div style="text-align:center;padding:3rem;color:var(--text-dim);font-family:var(--terminal);font-size:1.1rem;grid-column:1/-1">> loading events...</div>
+        <div style="text-align:center;padding:3rem;color:var(--amber-dim);font-family:var(--courier);font-size:.9rem;grid-column:1/-1">C:\SCH\EVENTS> loading...</div>
       </div>
     </div>
   </section>
 
-  <!-- PUBLIC LEADERBOARD -->
-  <section class="pub-section" id="pub-lb">
+  <!-- LEADERBOARD -->
+  <section class="pub-section" id="pub-lb" style="border-top:1px solid rgba(255,176,0,.15)">
     <div style="max-width:800px;margin:0 auto">
-      <div class="sec-header" style="text-align:center"><span class="sec-tag">// MEMBER RANKINGS</span><h2 class="sec-title">LEADER<span>BOARD</span></h2><div class="sec-line" style="margin:1rem auto 0"></div></div>
+      <div class="ibm-sec-header">
+        <span class="ibm-sec-label">C:\SCH\RANKS> QUERY --TOP10</span>
+        <h2 class="ibm-sec-title">LEADERBOARD</h2>
+        <div class="ibm-sec-div"></div>
+      </div>
       <div id="pub-lb-list" style="margin-top:3rem">
-        <div style="text-align:center;padding:3rem;color:var(--text-dim);font-family:var(--terminal);font-size:1.1rem">> loading rankings...</div>
+        <div style="text-align:center;padding:3rem;color:var(--amber-dim);font-family:var(--courier);font-size:.9rem">C:\SCH\RANKS> loading...</div>
       </div>
     </div>
   </section>
 
-  <!-- JOIN FORM -->
-  <section class="pub-section" id="pub-join" style="background:linear-gradient(180deg,#000,#001a0d)">
+  <!-- JOIN -->
+  <section class="pub-section" id="pub-join" style="border-top:1px solid rgba(255,176,0,.15)">
     <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start" class="join-pub-grid">
-      <div>
-        <div class="sec-header"><span class="sec-tag">// OPEN RECRUITMENT</span><h2 class="sec-title">JOIN THE <span>HOUSE</span></h2><div class="sec-line"></div></div>
-        <p style="color:var(--text-dim);line-height:1.8;font-size:.9rem;margin:1.5rem 0">We don't care about your GPA. We care about how you think under pressure, how quickly you learn, and whether you have the drive to push past comfortable.</p>
+      <div style="font-family:var(--courier)">
+        <div class="ibm-sec-header" style="text-align:left">
+          <span class="ibm-sec-label">C:\SCH\RECRUIT> APPLY.EXE</span>
+          <h2 class="ibm-sec-title" style="text-align:left">JOIN THE HOUSE</h2>
+          <div class="ibm-sec-div" style="margin-left:0"></div>
+        </div>
+        <p style="color:rgba(255,176,0,.6);line-height:2;font-size:.9rem;margin:1.5rem 0">We don't care about your GPA. We care about how you think under pressure, how quickly you learn, and whether you have the drive to push past comfortable.</p>
         <ul style="list-style:none">
-          <li style="padding:.5rem 0;color:var(--text-dim);font-size:.85rem;border-bottom:1px solid rgba(0,255,136,.08);display:flex;gap:.8rem">
-            <span style="color:var(--neon);font-family:var(--terminal)">>></span> Private CTF labs &amp; challenge servers
-          </li>
-          <li style="padding:.5rem 0;color:var(--text-dim);font-size:.85rem;border-bottom:1px solid rgba(0,255,136,.08);display:flex;gap:.8rem">
-            <span style="color:var(--neon);font-family:var(--terminal)">>></span> Direct mentorship from senior members
-          </li>
-          <li style="padding:.5rem 0;color:var(--text-dim);font-size:.85rem;border-bottom:1px solid rgba(0,255,136,.08);display:flex;gap:.8rem">
-            <span style="color:var(--neon);font-family:var(--terminal)">>></span> Team entry to national competitions
-          </li>
-          <li style="padding:.5rem 0;color:var(--text-dim);font-size:.85rem;border-bottom:1px solid rgba(0,255,136,.08);display:flex;gap:.8rem">
-            <span style="color:var(--neon);font-family:var(--terminal)">>></span> Internal workshops not available publicly
-          </li>
-          <li style="padding:.5rem 0;color:var(--text-dim);font-size:.85rem;display:flex;gap:.8rem">
-            <span style="color:var(--neon);font-family:var(--terminal)">>></span> Elite network of alumni &amp; industry contacts
-          </li>
+          <li style="padding:.5rem 0;color:rgba(255,176,0,.55);font-size:.85rem;border-bottom:1px solid rgba(255,176,0,.08);display:flex;gap:.8rem"><span style="color:var(--amber)">&gt;&gt;</span> Private CTF labs &amp; challenge servers</li>
+          <li style="padding:.5rem 0;color:rgba(255,176,0,.55);font-size:.85rem;border-bottom:1px solid rgba(255,176,0,.08);display:flex;gap:.8rem"><span style="color:var(--amber)">&gt;&gt;</span> Direct mentorship from senior members</li>
+          <li style="padding:.5rem 0;color:rgba(255,176,0,.55);font-size:.85rem;border-bottom:1px solid rgba(255,176,0,.08);display:flex;gap:.8rem"><span style="color:var(--amber)">&gt;&gt;</span> Team entry to national competitions</li>
+          <li style="padding:.5rem 0;color:rgba(255,176,0,.55);font-size:.85rem;border-bottom:1px solid rgba(255,176,0,.08);display:flex;gap:.8rem"><span style="color:var(--amber)">&gt;&gt;</span> Internal workshops not available publicly</li>
+          <li style="padding:.5rem 0;color:rgba(255,176,0,.55);font-size:.85rem;display:flex;gap:.8rem"><span style="color:var(--amber)">&gt;&gt;</span> Elite network of alumni &amp; industry contacts</li>
         </ul>
       </div>
-      <div style="background:rgba(0,255,136,.03);border:1px solid var(--border);padding:2.5rem">
-        <div style="font-family:var(--terminal);font-size:.85rem;color:var(--text-dim);letter-spacing:.1em;margin-bottom:2rem">// RECRUITMENT TERMINAL v2.1</div>
+      <div style="background:var(--ibm-bg2);border:1px solid var(--ibm-border);padding:2rem">
+        <div style="font-family:var(--courier);font-size:.7rem;color:var(--amber-dim);letter-spacing:.15em;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,176,0,.1);padding-bottom:.8rem">IBM PERSONAL COMPUTER &nbsp;|&nbsp; RECRUITMENT TERMINAL v2.1</div>
         <div id="pub-join-fields">
-          <div class="form-field"><label>// OPERATIVE NAME</label><input type="text" id="pj-name" placeholder="Full name"></div>
-          <div class="form-field"><label>// SECURE CHANNEL</label><input type="email" id="pj-email" placeholder="your@email.com"></div>
-          <div class="form-field"><label>// PASSWORD</label><input type="password" id="pj-pass" placeholder="Create password (min 6 chars)"></div>
-          <div class="form-field"><label>// PREFERRED TRACK</label>
+          <div class="ibm-form-field"><label>OPERATIVE NAME</label><input type="text" id="pj-name" placeholder="Full name"></div>
+          <div class="ibm-form-field"><label>SECURE CHANNEL</label><input type="email" id="pj-email" placeholder="your@email.com"></div>
+          <div class="ibm-form-field"><label>ACCESS CODE</label><input type="password" id="pj-pass" placeholder="min 6 characters"></div>
+          <div class="ibm-form-field"><label>PREFERRED TRACK</label>
             <select id="pj-track">
-              <option value="">— SELECT DISCIPLINE —</option>
+              <option value="">-- SELECT --</option>
               <option value="cyber">Cyber Security</option>
-              <option value="ai">AI & Robotics</option>
+              <option value="ai">AI &amp; Robotics</option>
               <option value="ps">Problem Solving</option>
             </select>
           </div>
-          <div class="form-field"><label>// SKILL LEVEL</label>
+          <div class="ibm-form-field"><label>SKILL LEVEL</label>
             <select id="pj-level">
-              <option value="">— SELF ASSESS —</option>
-              <option value="beginner">Zero — I'm new</option>
-              <option value="intermediate">Some — I've done basics</option>
-              <option value="advanced">Mid — I can build things</option>
-              <option value="expert">Senior — Already dangerous</option>
+              <option value="">-- ASSESS --</option>
+              <option value="beginner">Zero - I am new</option>
+              <option value="intermediate">Some - I have done basics</option>
+              <option value="advanced">Mid - I can build things</option>
+              <option value="expert">Senior - Already dangerous</option>
             </select>
           </div>
-          <div id="pj-error" class="auth-error"></div>
-          <button class="auth-btn" onclick="submitJoin()" style="margin-top:1rem">INITIATE RECRUITMENT</button>
+          <div id="pj-error" style="color:#ff6600;font-family:var(--courier);font-size:.85rem;min-height:1.2rem;margin-top:.5rem"></div>
+          <button class="ibm-submit" onclick="submitJoin()" style="margin-top:1rem">[ INITIATE RECRUITMENT ]</button>
         </div>
-        <div id="pub-join-success" style="display:none;font-family:var(--terminal);font-size:1.3rem;color:var(--neon);line-height:2.2;text-align:center;padding:2rem">
-          <div>> application received.</div>
-          <div>> awaiting admin approval.</div>
-          <div>> check your email for updates.</div>
-          <div style="font-size:3rem;margin-top:.5rem">✓</div>
+        <div id="pub-join-success" style="display:none;font-family:var(--courier);font-size:1rem;color:var(--amber);line-height:2.5;text-align:center;padding:2rem">
+          <div>C:\SCH\RECRUIT> processing...</div>
+          <div>APPLICATION RECEIVED.</div>
+          <div>AWAITING ADMIN APPROVAL.</div>
+          <div>CHECK EMAIL FOR UPDATES.</div>
+          <div style="font-family:var(--pixel);font-size:1.5rem;margin-top:1rem;text-shadow:0 0 15px var(--amber)">[OK]</div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer style="position:relative;z-index:2;border-top:1px solid var(--border);padding:3rem 2rem;text-align:center">
-    <div style="font-family:var(--display);font-weight:900;font-size:2rem;color:var(--neon);text-shadow:0 0 20px var(--neon);letter-spacing:.2em">SCH</div>
-    <div style="font-family:var(--terminal);font-size:1rem;color:var(--text-dim);margin:.5rem 0 2rem;letter-spacing:.2em">// SNAKE CHAOS HOUSE — ALL SYSTEMS OPERATIONAL //</div>
+  <!-- FOOTER -->
+  <footer class="ibm-footer">
+    <div style="font-family:var(--pixel);font-size:1rem;color:var(--amber);text-shadow:0 0 15px var(--amber);letter-spacing:.15em;margin-bottom:.5rem">[ SCH ]</div>
+    <div style="font-family:var(--courier);font-size:.8rem;color:var(--amber-dim);margin:.5rem 0 2rem;letter-spacing:.25em">SNAKE CHAOS HOUSE &nbsp;|&nbsp; ALL SYSTEMS OPERATIONAL</div>
     <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2rem;flex-wrap:wrap">
-      <a href="https://instagram.com/snakechaoshouse" target="_blank" style="display:flex;align-items:center;gap:.6rem;border:1px solid rgba(0,255,136,0.18);padding:.6rem 1.3rem;color:#4a8c66;font-size:.75rem;letter-spacing:.15em;transition:all .3s;font-family:Share Tech Mono,monospace;text-decoration:none" onmouseover="this.style.borderColor=&apos;#E1306C&apos;;this.style.color=&apos;#E1306C&apos;;this.style.boxShadow=&apos;0 0 20px rgba(225,48,108,0.25)&apos;" onmouseout="this.style.borderColor=&apos;rgba(0,255,136,0.18)&apos;;this.style.color=&apos;#4a8c66&apos;;this.style.boxShadow=&apos;none&apos;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        INSTAGRAM
+      <a href="https://instagram.com/snakechaoshouse" target="_blank"
+         style="display:flex;align-items:center;gap:.6rem;border:1px solid rgba(255,176,0,.25);padding:.6rem 1.3rem;color:var(--amber-dim);font-size:.75rem;letter-spacing:.15em;transition:all .3s;font-family:var(--courier);text-decoration:none"
+         onmouseover="this.style.borderColor='#E1306C';this.style.color='#E1306C';this.style.boxShadow='0 0 15px rgba(225,48,108,0.2)'"
+         onmouseout="this.style.borderColor='rgba(255,176,0,.25)';this.style.color='var(--amber-dim)';this.style.boxShadow='none'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        INSTAGRAM @snakechaoshouse
       </a>
-      <a href="https://tiktok.com/@snakechaoshouse.nmu" target="_blank" style="display:flex;align-items:center;gap:.6rem;border:1px solid rgba(0,255,136,0.18);padding:.6rem 1.3rem;color:#4a8c66;font-size:.75rem;letter-spacing:.15em;transition:all .3s;font-family:Share Tech Mono,monospace;text-decoration:none" onmouseover="this.style.borderColor=&apos;#00f2ea&apos;;this.style.color=&apos;#00f2ea&apos;;this.style.boxShadow=&apos;0 0 20px rgba(0,242,234,0.25)&apos;" onmouseout="this.style.borderColor=&apos;rgba(0,255,136,0.18)&apos;;this.style.color=&apos;#4a8c66&apos;;this.style.boxShadow=&apos;none&apos;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
-        TIKTOK
+      <a href="https://tiktok.com/@snakechaoshouse.nmu" target="_blank"
+         style="display:flex;align-items:center;gap:.6rem;border:1px solid rgba(255,176,0,.25);padding:.6rem 1.3rem;color:var(--amber-dim);font-size:.75rem;letter-spacing:.15em;transition:all .3s;font-family:var(--courier);text-decoration:none"
+         onmouseover="this.style.borderColor='#00f2ea';this.style.color='#00f2ea';this.style.boxShadow='0 0 15px rgba(0,242,234,0.2)'"
+         onmouseout="this.style.borderColor='rgba(255,176,0,.25)';this.style.color='var(--amber-dim)';this.style.boxShadow='none'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
+        TIKTOK @snakechaoshouse.nmu
       </a>
     </div>
-    <div style="font-size:.7rem;color:rgba(0,255,136,.2);letter-spacing:.2em;font-family:var(--terminal)">© 2025 SNAKE CHAOS HOUSE — CLASSIFIED — UNAUTHORIZED ACCESS WILL BE TRACED</div>
+    <div style="font-size:.65rem;color:rgba(255,176,0,.2);letter-spacing:.25em;font-family:var(--courier)">(C) 2025 SNAKE CHAOS HOUSE &nbsp;|&nbsp; UNAUTHORIZED ACCESS WILL BE TRACED &nbsp;|&nbsp; ALL RIGHTS RESERVED</div>
   </footer>
+
 </div>
 
 <!-- ============================
@@ -1539,12 +1941,14 @@ async function loadPublicEvents() {
   const grid = document.getElementById('pub-events-grid');
   if (!data?.length) { grid.innerHTML = '<div style="color:var(--text-dim);font-family:var(--terminal);font-size:1.1rem;text-align:center;padding:3rem;grid-column:1/-1">> No upcoming events. Check back soon.</div>'; return; }
   grid.innerHTML = data.map(ev => `
-    <div class="event-card">
-      <span class="event-status upcoming">UPCOMING</span>
-      <div class="event-title">${ev.title}</div>
-      <p class="event-desc">${ev.description||''}</p>
-      <div class="event-meta"><span>📅 ${ev.date}</span>${ev.time?`<span>🕐 ${ev.time}</span>`:''}</div>
-      <a href="#pub-join" class="neon-btn sm" style="display:block;text-align:center;margin-top:1rem;text-decoration:none">REGISTER</a>
+    <div style="background:var(--ibm-bg2);border:1px solid rgba(255,176,0,.2);padding:1.8rem;font-family:var(--courier);transition:all .2s;position:relative" onmouseover="this.style.borderColor='var(--amber)';this.style.boxShadow='0 0 15px rgba(255,176,0,.08)'" onmouseout="this.style.borderColor='rgba(255,176,0,.2)';this.style.boxShadow='none'">
+      <div style="font-size:.6rem;letter-spacing:.3em;color:var(--amber);border:1px solid rgba(255,176,0,.3);padding:.2rem .7rem;display:inline-block;margin-bottom:1rem;background:rgba(255,176,0,.06)">[UPCOMING]</div>
+      <div style="font-family:var(--courier);font-weight:700;font-size:.95rem;color:var(--amber);margin-bottom:.6rem">${ev.title}</div>
+      <p style="font-size:.82rem;color:rgba(255,176,0,.5);line-height:1.8;margin-bottom:1rem">${ev.description||''}</p>
+      <div style="font-size:.72rem;color:var(--amber-dim);display:flex;gap:1rem;flex-wrap:wrap">
+        <span>DATE: ${ev.date}</span>${ev.time?'<span>TIME: '+ev.time+'</span>':''}
+      </div>
+      <a href="#pub-join" style="display:block;text-align:center;margin-top:1.2rem;font-family:var(--courier);font-size:.75rem;letter-spacing:.2em;color:var(--ibm-bg);background:var(--amber);padding:.6rem;text-decoration:none;transition:all .2s;box-shadow:2px 2px 0 rgba(0,0,0,.4)" onmouseover="this.style.background='#ffc933'" onmouseout="this.style.background='var(--amber)'">[REGISTER]</a>
     </div>`).join('');
 }
 async function loadPublicLeaderboard() {
@@ -1553,18 +1957,18 @@ async function loadPublicLeaderboard() {
   if (!data?.length) { el.innerHTML = '<div style="color:var(--text-dim);font-family:var(--terminal);font-size:1.1rem;text-align:center;padding:3rem">> No data yet.</div>'; return; }
   const max = data[0]?.points || 1;
   el.innerHTML = `
-    <div style="display:grid;grid-template-columns:50px 1fr 100px 70px;gap:1rem;padding:.7rem 1.5rem;font-size:.6rem;letter-spacing:.3em;color:var(--text-dim);border-bottom:1px solid var(--border)"><span>RANK</span><span>OPERATIVE</span><span>PROGRESS</span><span style="text-align:right">PTS</span></div>
+    <div style="display:grid;grid-template-columns:50px 1fr 80px;gap:1rem;padding:.6rem 1rem;font-size:.6rem;letter-spacing:.3em;color:var(--amber-dim);background:rgba(255,176,0,.05);border:1px solid rgba(255,176,0,.2);border-bottom:none;font-family:var(--courier)"><span>RANK</span><span>OPERATIVE</span><span style="text-align:right">PTS</span></div>
     ${data.map((m,i) => {
-      const r = i+1; const pct = ((m.points||0)/max*100).toFixed(1);
-      const rankColor = r===1?'var(--gold)':r===2?'var(--silver)':r===3?'var(--bronze)':'var(--text-dim)';
-      return `<div style="display:grid;grid-template-columns:50px 1fr 100px 70px;gap:1rem;padding:1rem 1.5rem;border-bottom:1px solid rgba(0,255,136,.06);align-items:center;background:${r<=3?['rgba(255,215,0,.04)','rgba(192,192,192,.03)','rgba(205,127,50,.03)'][r-1]:'transparent'}">
-        <span style="font-family:var(--display);font-weight:900;font-size:${r<=3?'1.1':'1'}rem;color:${rankColor}">${r===1?'👑':r===2?'🥈':r===3?'🥉':'#'+r}</span>
+      const r = i+1;
+      const rankStr = r===1?'[1ST]':r===2?'[2ND]':r===3?'[3RD]':'[#'+r+']';
+      const rankColor = r===1?'var(--amber)':r===2?'rgba(255,176,0,.7)':r===3?'rgba(255,176,0,.5)':'rgba(255,176,0,.35)';
+      return `<div style="display:grid;grid-template-columns:50px 1fr 80px;gap:1rem;padding:.9rem 1rem;border:1px solid rgba(255,176,0,.08);border-top:none;align-items:center;font-family:var(--courier);background:${r===1?'rgba(255,176,0,.06)':r===2?'rgba(255,176,0,.03)':'transparent'};transition:background .2s" onmouseover="this.style.background='rgba(255,176,0,.05)'" onmouseout="this.style.background='${r===1?'rgba(255,176,0,.06)':r===2?'rgba(255,176,0,.03)':'transparent'}'">
+        <span style="font-family:var(--courier);font-weight:700;font-size:.75rem;color:${rankColor}">${rankStr}</span>
         <div style="display:flex;align-items:center;gap:.8rem">
-          <div style="width:30px;height:30px;background:var(--neon-dark);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:.65rem;font-weight:700;color:var(--neon);clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%)">${(m.name||'??').substring(0,2).toUpperCase()}</div>
-          <div><div style="font-size:.88rem">${m.name}</div><div style="font-family:var(--terminal);font-size:.75rem;color:var(--text-dim)">${m.handle||''} <span class="badge badge-${m.track||'member'}" style="margin-left:.3rem">${(m.track||'—').toUpperCase()}</span></div></div>
+          <div style="width:28px;height:28px;background:rgba(255,176,0,.08);border:1px solid rgba(255,176,0,.2);display:flex;align-items:center;justify-content:center;font-family:var(--courier);font-size:.65rem;font-weight:700;color:var(--amber)">${(m.name||'??').substring(0,2).toUpperCase()}</div>
+          <div><div style="font-size:.88rem;color:rgba(255,176,0,.85)">${m.name}</div><div style="font-size:.72rem;color:var(--amber-dim)">${m.handle||''} [${(m.track||'—').toUpperCase()}]</div></div>
         </div>
-        <div style="height:5px;background:rgba(0,255,136,.1);overflow:hidden"><div style="height:100%;width:${pct}%;background:linear-gradient(90deg,var(--neon-dark),var(--neon));box-shadow:0 0 6px var(--neon)"></div></div>
-        <div style="font-family:var(--display);font-weight:700;font-size:.85rem;color:var(--neon);text-align:right">${(m.points||0).toLocaleString()}</div>
+        <div style="font-family:var(--courier);font-weight:700;font-size:.85rem;color:var(--amber);text-align:right">${(m.points||0).toLocaleString()}</div>
       </div>`;
     }).join('')}`;
 }
